@@ -16,6 +16,7 @@
 ############################
 ##     INSTRUCCIONES      ##
 ############################
+## Script principal que gestiona todo el programa
 
 ############################
 ##     IMPORTACIONES      ##
