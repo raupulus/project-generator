@@ -22,6 +22,8 @@
 ##     IMPORTACIONES      ##
 ############################
 source './funciones.sh'
+source './php-yii-basic/generar.sh'
+source './php-yii-advanced/generar.sh'
 
 ############################
 ##       CONSTANTES       ##
