@@ -104,6 +104,8 @@ permisos() {
 subir_github() {
     ## Preguntar si quiere subir a github el repositorio
     echo -e "$VE Subiendo repositorio a GitHub$CL"
+
+    ## TODO → Plantear con "hub" para crear repositorio remoto y subirlo
 }
 
 ##
@@ -114,14 +116,12 @@ inicializar_GIT() {
     ## Preguntar si quiere iniciar repositorio GIT, si no existe y no hay un directorio ".git"
 
     ## Entrar al repositorio
-    #cd $1
-
-    ## Inicializar repositorio si
-    #git init
+    local dirActual=$PWD
+    cd $nombre
+    git init -q
+    git add .
+    git commit -q -m "Proyecto recién generado"
 
     ## Llama a la función que sube el repositorio a GitHub
     subir_github
 }
-###########################
-##       EJECUCIÓN       ##
-###########################
