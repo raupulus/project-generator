@@ -72,9 +72,11 @@ compruebaExisteProyecto() {
 ## @param  $1  String  Recibe la cadena con la ruta de la estructura
 ##
 generarEstructura() {
-    ## Crear el directorio
-    echo -e "$VE Creando directorio$RO $nombre$CL"
-    mkdir $nombre
+    ## Crear el directorio si no existe
+    if [[ ! -d $nombre ]]; then
+        echo -e "$VE Creando directorio$RO $nombre$CL"
+        mkdir $nombre
+    fi
 
     ## Copia la estructura base dentro del proyecto
     echo -e "$VE Copiando esqueleto de proyecto...$CL"
