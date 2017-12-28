@@ -39,7 +39,13 @@
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-## Si es ejecutado como root → exit 1
+## Si es ejecutado como root sale del script
+if [[ "$USER" = 'root']]; then
+    echo -e "$RO No se contempla root por motivos de seguridad.$CL"
+    echo -e "$VE Saliendo del scrip. Ejecútalo como usuario.$CL"
+    exit 1
+fi
+
 ## Generar marca de tiempo y si hace más de 1 día que no se actualiza ejecutar un → git pull
 ## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
 
