@@ -16,6 +16,10 @@
 ############################
 ##     INSTRUCCIONES      ##
 ############################
+## Permite integrar el repositorio en el sistema generando el comando
+## "proyecto" el cual se podrá ejecutar con el usuario que lo integra en
+## todo el sistema operativo (siempre que tenga permisos) para generar una
+## estructura e inicializar un repositorio.
 
 ############################
 ##     IMPORTACIONES      ##
@@ -37,8 +41,6 @@
 ##       EJECUCIÓN       ##
 ###########################
 
-
-## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
-
-
 ## Copiar en /home/$USER/.local/bin/proyecto el $WORKSCRIPT/proyecto
+
+exit 0
