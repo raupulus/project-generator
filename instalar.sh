@@ -59,8 +59,15 @@ if [[ "$USER" = 'root']]; then
     exit 1
 fi
 
+## Se elimina anterior existencia del comando
+if [[ -f "/home/$USER/.local/bin/proyecto" ]]; then
+    rm -rf "/home/$USER/.local/bin/proyecto"
+fi
+
 ## Copiar en /home/$USER/.local/bin/proyecto el $WORKSCRIPT/proyecto
+cp "$WORKSCRIPT/proyecto.sh" "/home/$USER/.local/bin/proyecto"
 
-
+## Reemplaza la ruta hacia el directorio del script en el archivo copiado
+sed -i "/s/^WORKSCRIPT=''$/WORKSCRIPT=$WORKSCRIPT/g" "/home/$USER/.local/bin/proyecto"
 
 exit 0
