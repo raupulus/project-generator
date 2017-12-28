@@ -7,6 +7,8 @@ Se creará un comando solo para el usuario que podrá llamarse desde cualquier p
 
 Tras crear la estructura nos preguntará si inicializar el repositorio y después si crear un repositorio en github asociado al mismo.
 
+# Este proyecto está aún en fase de construcción y puede no cumplir sus objetivos o no realizarlo correctamente.
+
 ## A tener en cuenta
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
 
