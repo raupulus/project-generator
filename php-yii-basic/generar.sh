@@ -16,9 +16,6 @@
 ############################
 ##     INSTRUCCIONES      ##
 ############################
-## Este script tiene como objetivo reunir las funciones comunes para todos
-## los demás scrips que componen el programa, con el fin de repetir la menor
-## cantidad de código posible.
 
 ############################
 ##     IMPORTACIONES      ##
@@ -35,30 +32,16 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
-##
-## Crea un repositorio en remoto en github y sube los cambios
-##
-subir_github() {
-    ## Preguntar si quiere subir a github el repositorio
-    echo -e "$VE Subiendo repositorio a GitHub$CL"
-}
 
-##
-## Inicializa un repositorio GIT
-## $1  String  Recibe el nombre del directorio donde inicializar
-##
-inicializar_GIT() {
-    ## Preguntar si quiere iniciar repositorio GIT, si no existe y no hay un directorio ".git"
-
-    ## Entrar al repositorio
-    #cd $1
-
-    ## Inicializar repositorio si
-    #git init
-
-    ## Llama a la función que sube el repositorio a GitHub
-    subir_github
-}
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
+generar_php_yii_basic() {
+    echo -e "$VE Generador de proyecto YII Básico$CL"
+
+    ## Preguntar nombre del directorio
+
+
+    ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
+    inicializar_GIT
+}
