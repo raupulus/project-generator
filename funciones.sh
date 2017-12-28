@@ -35,7 +35,16 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
-
+##
+## Inicializa un repositorio GIT
+## $1  String  Recibe el nombre del directorio donde inicializar
+##
+inicializar_GIT() {
+    ## Entrar al repositorio
+    #cd $1
+    ## Inicializar repositorio si existe y no hay un directorio ".git"
+    #git init
+}
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
