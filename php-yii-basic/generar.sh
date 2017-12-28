@@ -32,6 +32,33 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
+preparando() {
+    while [[ -z $nombre ]]; do
+        clear
+        echo -e "$VE Introduce el nombre del proyecto$RO"
+        read -p '  → ' nombre
+        echo -e "$VE El nombre del proyecto introducido es$RO $nombre$CL"
+    done
+
+    ## Comprueba que no exista
+    if [[ -d $nombre ]]; then
+        echo -e "$RO Ya existe el directorio$AM $nombre$CL"
+        echo -e "$VE ¿Quieres$RO BORRAR$VE y generarlo de nuevo?$RO"
+        read -p '  s/N → ' opcion
+        if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
+            rm -Rf $nombre
+        else
+            exit 1
+        fi
+    fi
+
+    ## Crear el directorio
+    mkdir $nombre
+}
+
+azc() {
+    echo "test"
+}
 
 ###########################
 ##       EJECUCIÓN       ##
@@ -41,7 +68,11 @@ generar_php_yii_basic() {
 
     ## Preguntar nombre del directorio
 
+    ## Preparar
+    preparando
 
     ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
     inicializar_GIT
+
+    azc
 }
