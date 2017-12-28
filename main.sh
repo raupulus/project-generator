@@ -48,7 +48,29 @@ USER=$(whoami)   ## Usuario que ejecuta el script
 ###########################
 ## Menú principal
 menu_principal() {
-    echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
+    while true; do
+        clear
+        echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
+        echo ""
+        echo -e "$RO 1)$AZ Proyecto PHP YII Básico$CL"
+        echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
+        #echo -e "$RO 3)$AZ Proyecto PHP Laravel$CL"
+        #echo -e "$RO 4)$AZ Proyecto Python Django$CL"
+        echo -e "$RO 0)$AZ Salir$CL"
+        echo ""
+        echo -e "$RO Introduce el proyecto"
+        read -p '  → ' entrada
+        echo -e "$CL"
+
+        case $entrada in
+
+            1) generar_php_yii_basic && exit 0;;
+            2) generar_php_yii_advanced && exit 0;;
+
+            0) exit 0;;
+            *) clear; echo -e "$RO Opción no válida$CL"; read x;;
+        esac
+    done
 }
 
 ###########################
