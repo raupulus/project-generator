@@ -59,7 +59,6 @@ if [[ -d "$WORKSCRIPT" ]] || [[ -f "$WORKSCRIPT/main.sh" ]]; then
     fi
 fi
 
-
 ## Generar marca de tiempo dentro del repositorio y si hace más de 1 día que no se actualiza ejecutar un → git pull
 ## Añadir dicha marca de tiempo al .gitignore
 
