@@ -70,6 +70,9 @@ cp "$WORKSCRIPT/proyecto.sh" "/home/$USER/.local/bin/proyecto"
 ## Dar permisos
 chmod 755 "/home/$USER/.local/bin/proyecto"
 
+## Asignar propietario
+sudo chown "$USER:$USER" "/home/$USER/.local/bin/proyecto"
+
 ## Reemplaza la ruta hacia el directorio del script en el archivo copiado
 ## Observar que el delimitador no es "/" sino que lo cambio a "|"
 sed -i "s|^WORKSCRIPT=''|WORKSCRIPT=\'$WORKSCRIPT\'|g" "/home/$USER/.local/bin/proyecto"
