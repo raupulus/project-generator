@@ -39,9 +39,11 @@
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
+## Si es ejecutado como root → exit 1
+## Generar marca de tiempo y si hace más de 1 día que no se actualiza ejecutar un → git pull
+## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
+
+
 
 
 exit 0
-
-
-## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
