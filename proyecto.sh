@@ -40,17 +40,17 @@ USER=$(whoami)   ## Usuario que ejecuta el script
 ##       EJECUCIÓN       ##
 ###########################
 ## Si es ejecutado como root sale del script
-if [[ "$USER" = 'root']]; then
+if [[ "$USER" = 'root' ]]; then
     echo -e "$RO No se contempla root por motivos de seguridad.$CL"
     echo -e "$VE Saliendo del scrip. Ejecútalo como usuario.$CL"
     exit 1
 fi
 
 ## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
-if [[ -d "$WORKSCRIPT" ]] || [[ -f "$WORKSCRIPT/main.sh" ]]; then
+if [[ ! -d "$WORKSCRIPT" ]] || [[ ! -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
     read -p '¿Clonar de nuevo el directorio en el mismo lugar? s/N' entrada
-    if [[ $entrada = 's']] || [[ "$entrada" = "S" ]]; then
+    if [[ $entrada = 's' ]] || [[ "$entrada" = "S" ]]; then
         echo -e "$VE Preparando para clonar repositorio$CL"
         git clone https://github.com/fryntiz/Generador_Proyectos.git $WORKSCRIPT || exit 1
     else
@@ -61,5 +61,8 @@ fi
 
 ## Generar marca de tiempo dentro del repositorio y si hace más de 1 día que no se actualiza ejecutar un → git pull
 ## Añadir dicha marca de tiempo al .gitignore
+
+## LLamada al script principal del repositorio main.sh
+$WORKSCRIPT/main.sh
 
 exit 0
