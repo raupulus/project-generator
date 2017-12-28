@@ -78,7 +78,7 @@ generarEstructura() {
 
     ## Copia la estructura base dentro del proyecto
     echo -e "$VE Copiando esqueleto de proyecto...$CL"
-    cp -R "$1/*" "$nombre/*"
+    cp -R "$1/" "./$nombre/"
 }
 
 ##
@@ -88,6 +88,13 @@ generarBD() {
     echo -e "$VE Creando base de datos para$RO $nombre$CL"
 }
 
+##
+## Establece permisos correspondientes para el nuevo proyecto
+##
+permisos() {
+    chmod 755 -R "$nombre"
+    chown "$USER:www-data" -R "$nombre"
+}
 ##
 ## Crea un repositorio en remoto en github y sube los cambios
 ##

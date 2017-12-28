@@ -32,9 +32,16 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
-generarEstructuraYiiBasic() {
+preconfiguraciones() {
+    echo "a"
+}
 
+instalacion() {
+    echo "a"
+}
 
+postconfiguraciones() {
+    echo "a"
 }
 
 ###########################
@@ -50,10 +57,17 @@ generar_php_yii_basic() {
     compruebaExisteProyecto
 
     ## Generar estructura básica
-    generarEstructura
+    generarEstructura "$WORKSCRIPT/php-yii-basic/estructura"
 
     ## Crear Base de Datos
     generarBD
+
+    preconfiguraciones
+    instalacion
+    postconfiguraciones
+
+    ## Asigna permisos necesarios
+    permisos
 
     ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
     inicializar_GIT
