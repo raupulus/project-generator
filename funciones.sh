@@ -78,7 +78,7 @@ generarEstructura() {
 
     ## Copia la estructura base dentro del proyecto
     echo -e "$VE Copiando esqueleto de proyecto...$CL"
-    cp -R "$1/" "./$nombre/"
+    cp -R $1/* "./$nombre/"
 }
 
 ##
@@ -92,6 +92,9 @@ generarBD() {
 ## Establece permisos correspondientes para el nuevo proyecto
 ##
 permisos() {
+    echo -e "$VE Asignando dueños y permisos$CL"
+    echo -e "$VE Usuario →$RO $USER$CL"
+    echo -e "$VE Grupo   →$RO www-data$CL"
     chmod 755 -R "$nombre"
     chown "$USER:www-data" -R "$nombre"
 }
