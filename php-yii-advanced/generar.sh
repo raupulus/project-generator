@@ -36,3 +36,6 @@
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
+generar_php_yii_advanced() {
+    echo -e "$VE Generador de proyecto YII Avanzado$CL"
+}
