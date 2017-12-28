@@ -36,9 +36,3 @@
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-
-
-exit 0
-
-
-## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
