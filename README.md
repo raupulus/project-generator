@@ -10,14 +10,14 @@ Tras crear la estructura nos preguntará si inicializar el repositorio y despué
 ## A tener en cuenta
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
 
-Se parte de haber preparado el script con uno de los siguientes scripts propios:
+Se parte de haber preparado el script con uno de los siguientes **scripts** propios:
 - https://github.com/fryntiz/Fedora_Developer_Init
 - https://github.com/fryntiz/Debian_Developer_Init
 
-La Guía de estilos usada para la sintaxis en bash es la siguiente:
+La Guía de **estilos** usada para la sintaxis en **bash** es la siguiente:
 - https://github.com/fryntiz/Bash_Style_Guide
 
-Se deberá tener configurado gestores de paquetes para cada proyecto y para git:
-- Para que funcione correctamente se deberá tener instalado servidores y tecnologías necesarias para cada ámbito, por ejemplo para un proyecto php deberá existir **composer**, para python **pip**
-- Para inicializar repositorio deberá estar instalado GIT.
-- Para poder crear repositorio en GitHub correctamente deberá estar git configurado en el sistema.
+Se deberá tener configurado gestores de paquetes para cada **proyecto** y para **git**:
+- Para que funcione correctamente se deberá tener instalado servidores y tecnologías necesarias para cada ámbito, por ejemplo para un proyecto **php** deberá existir **composer**, para python **pip**
+- Para inicializar repositorio deberá estar instalado **GIT**.
+- Para poder crear repositorio en **GitHub** correctamente deberá estar **git** configurado en el sistema.
