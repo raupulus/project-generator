@@ -46,10 +46,15 @@ USER=$(whoami)   ## Usuario que ejecuta el script
 ###########################
 ##       FUNCIONES       ##
 ###########################
+## Menú principal
+menu_principal() {
+    echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
+}
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
 
+menu_principal
 
 exit 0
