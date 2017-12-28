@@ -53,7 +53,7 @@ USER=$(whoami)   ## Usuario que ejecuta el script
 ##       EJECUCIÓN       ##
 ###########################
 
-if [[ "$USER" = 'root']]; then
+if [[ "$USER" = 'root' ]]; then
     echo -e "$RO No se contempla root por motivos de seguridad.$CL"
     echo -e "$VE Saliendo del scrip. Ejecútalo como usuario.$CL"
     exit 1
@@ -68,6 +68,7 @@ fi
 cp "$WORKSCRIPT/proyecto.sh" "/home/$USER/.local/bin/proyecto"
 
 ## Reemplaza la ruta hacia el directorio del script en el archivo copiado
-sed -i "/s/^WORKSCRIPT=''$/WORKSCRIPT=$WORKSCRIPT/g" "/home/$USER/.local/bin/proyecto"
+## Observar que el delimitador no es "/" sino que lo cambio a "|"
+sed -i "s|^WORKSCRIPT=''|WORKSCRIPT=\'$WORKSCRIPT\'|g" "/home/$USER/.local/bin/proyecto"
 
 exit 0
