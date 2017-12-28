@@ -33,15 +33,16 @@
 ##       FUNCIONES       ##
 ###########################
 preconfiguraciones() {
-    echo "a"
+    echo -e "$VE Generando Preconfiguraciones$CL"
+    composer create-project --no-install --no-scripts yiisoft/yii2-app-basic $nombre
 }
 
 instalacion() {
-    echo "a"
+    echo -e "$VE Instalando$CL"
 }
 
 postconfiguraciones() {
-    echo "a"
+    echo -e "$VE Generando Postconfiguraciones$CL"
 }
 
 ###########################
@@ -56,13 +57,14 @@ generar_php_yii_basic() {
     ## Comprueba si ya existe un proyecto
     compruebaExisteProyecto
 
+    preconfiguraciones
+
     ## Generar estructura básica
     generarEstructura "$WORKSCRIPT/php-yii-basic/estructura"
 
     ## Crear Base de Datos
     generarBD
 
-    preconfiguraciones
     instalacion
     postconfiguraciones
 
