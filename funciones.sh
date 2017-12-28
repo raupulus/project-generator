@@ -67,6 +67,26 @@ compruebaExisteProyecto() {
     fi
 }
 
+##
+## Genera la estructura básica del proyecto
+## @param  $1  String  Recibe la cadena con la ruta de la estructura
+##
+generarEstructura() {
+    ## Crear el directorio
+    echo -e "$VE Creando directorio$RO $nombre$CL"
+    mkdir $nombre
+
+    ## Copia la estructura base dentro del proyecto
+    echo -e "$VE Copiando esqueleto de proyecto...$CL"
+    cp -R "$1/*" "$nombre/*"
+}
+
+##
+## Crear BD con el nombre del proyecto
+##
+generarBD() {
+    echo -e "$VE Creando base de datos para$RO $nombre$CL"
+}
 
 ##
 ## Crea un repositorio en remoto en github y sube los cambios

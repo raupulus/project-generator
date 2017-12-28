@@ -32,22 +32,28 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
-preparando() {
-    ## Crear el directorio
-    mkdir $nombre
-}
+generarEstructuraYiiBasic() {
 
+
+}
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
 generar_php_yii_basic() {
     echo -e "$VE Generador de proyecto YII Básico$CL"
+
+    ## Pide nombre para el directorio del proyecto
     nombreProyecto
+
+    ## Comprueba si ya existe un proyecto
     compruebaExisteProyecto
 
-    ## Preparar
-    preparando
+    ## Generar estructura básica
+    generarEstructura
+
+    ## Crear Base de Datos
+    generarBD
 
     ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
     inicializar_GIT
