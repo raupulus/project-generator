@@ -16,6 +16,9 @@
 ############################
 ##     INSTRUCCIONES      ##
 ############################
+## Este script tiene como objetivo reunir las funciones comunes para todos
+## los demás scrips que componen el programa, con el fin de repetir la menor
+## cantidad de código posible.
 
 ############################
 ##     IMPORTACIONES      ##
