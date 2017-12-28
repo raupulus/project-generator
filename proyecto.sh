@@ -16,6 +16,9 @@
 ############################
 ##     INSTRUCCIONES      ##
 ############################
+## Este script se enlazará dentro de /home/$USER/.local/bin/proyecto
+## Será el lanzador de "main.sh" tras comprobar que existe el repositorio
+## y actualizarlo si procede para traer cambios.
 
 ############################
 ##     IMPORTACIONES      ##
