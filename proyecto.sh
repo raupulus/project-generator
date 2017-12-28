@@ -21,10 +21,6 @@
 ## y actualizarlo si procede para traer cambios.
 
 ############################
-##     IMPORTACIONES      ##
-############################
-
-############################
 ##       CONSTANTES       ##
 ############################
 AM="\033[1;33m"  ## Color Amarillo
@@ -41,14 +37,6 @@ WORKSCRIPT=''  ## Directorio principal del script
 USER=$(whoami)   ## Usuario que ejecuta el script
 
 ###########################
-##       VARIABLES       ##
-###########################
-
-###########################
-##       FUNCIONES       ##
-###########################
-
-###########################
 ##       EJECUCIÓN       ##
 ###########################
 ## Si es ejecutado como root sale del script
@@ -58,20 +46,21 @@ if [[ "$USER" = 'root']]; then
     exit 1
 fi
 
-## Generar marca de tiempo y si hace más de 1 día que no se actualiza ejecutar un → git pull
-
 ## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
 if [[ -d "$WORKSCRIPT" ]] || [[ -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
     read -p '¿Clonar de nuevo el directorio en el mismo lugar? s/N' entrada
     if [[ $entrada = 's']] || [[ "$entrada" = "S" ]]; then
         echo -e "$VE Preparando para clonar repositorio$CL"
-        git clone https://github.com/fryntiz/Generador_Proyectos.git $WORKSCRIPT
+        git clone https://github.com/fryntiz/Generador_Proyectos.git $WORKSCRIPT || exit 1
     else
         echo -e "$VE No se clona el repositorio$CL"
+        exit 1
     fi
 fi
 
 
+## Generar marca de tiempo dentro del repositorio y si hace más de 1 día que no se actualiza ejecutar un → git pull
+## Añadir dicha marca de tiempo al .gitignore
 
 exit 0
