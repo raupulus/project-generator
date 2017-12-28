@@ -15,7 +15,7 @@ Se parte de haber preparado el script con uno de los siguientes scripts propios:
 - https://github.com/fryntiz/Debian_Developer_Init
 
 La Guía de estilos usada para la sintaxis en bash es la siguiente:
-https://github.com/fryntiz/Bash_Style_Guide
+- https://github.com/fryntiz/Bash_Style_Guide
 
 Se deberá tener configurado gestores de paquetes para cada proyecto y para git:
 - Para que funcione correctamente se deberá tener instalado servidores y tecnologías necesarias para cada ámbito, por ejemplo para un proyecto php deberá existir **composer**, para python **pip**
