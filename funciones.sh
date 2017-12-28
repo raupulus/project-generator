@@ -36,6 +36,39 @@
 ##       FUNCIONES       ##
 ###########################
 ##
+## Pide introducir un nombre para crear el proyecto
+##
+nombreProyecto() {
+    nombre=''
+    ## Pide el nombre del proyecto
+    while [[ -z $nombre ]]; do
+        clear
+        echo -e "$VE Introduce el nombre del proyecto$RO"
+        read -p '  → ' nombre
+        echo -e "$VE El nombre del proyecto introducido es$RO $nombre$CL"
+    done
+}
+
+##
+## Comprueba si ya existe este proyecto
+##
+compruebaExisteProyecto() {
+    ## Comprueba que no exista
+    if [[ -d $nombre ]]; then
+        echo -e "$RO Ya existe el directorio$AM $nombre$CL"
+        echo -e "$VE ¿Quieres$RO BORRAR$VE y generarlo de nuevo?$RO"
+        read -p '  s/N → ' opcion
+        if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
+            rm -Rf $nombre
+        else
+            echo -e "$VE Has elegido no borrarlo, no se puede continuar$CL"
+            exit 1
+        fi
+    fi
+}
+
+
+##
 ## Crea un repositorio en remoto en github y sube los cambios
 ##
 subir_github() {

@@ -44,6 +44,7 @@ source "$WORKSCRIPT/php-yii-advanced/generar.sh"
 ###########################
 ##       VARIABLES       ##
 ###########################
+nombre=''  ## El nombre del proyecto
 
 ###########################
 ##       FUNCIONES       ##
