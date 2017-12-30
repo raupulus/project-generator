@@ -87,7 +87,28 @@ generarEstructura() {
 ## Crear BD con el nombre del proyecto
 ##
 generarBD() {
-    echo -e "$VE Creando base de datos para$RO $nombre$CL"
+    echo -e "$VE ¿Quieres crear un usuario psql y una BD para el proyecto?$CL"
+    echo -e "$VE Esto borrará si existe alguna con ese nombre$RO"
+    read -p '  s/N → ' opcion
+    if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
+        echo -e "$VE Asegurando que postgreSQL está funcionando$CL"
+        sudo service postgresql status > /dev/null || sudo service postgresql start
+
+        echo -e "$VE Eliminando BD y usuario$RO $nombre$CL"
+        sudo -u postgres dropdb --if-exists $nombre
+        sudo -u postgres dropdb --if-exists $nombre_test
+        sudo -u postgres dropuser --if-exists $nombre
+
+        ./$nombre/db/CrearDB.sh
+
+        if [[ -f ./$nombre/db/Cargar_Datos.sh ]]; then
+            echo -e "$VE Cargando datos en la BD$CL"
+            ./$nombre/db/Cargar_Datos.sh
+        fi
+    else
+        echo -e "$VE No se creará Base de Datos para el proyecto$CL"
+        exit 1
+    fi
 }
 
 ##
