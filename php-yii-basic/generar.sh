@@ -72,6 +72,7 @@ postconfiguraciones() {
 EOT
     perl -i -0pe "s%(\s*)'components'%\1$SUB\1'components'%" $nombre/config/console.php
 
+    ## Añadir a la lista de ignorar de git
     echo -e "\ntests/chromedriver" >> $nombre/.gitignore
     echo -e "\n.php_cs.cache" >> $nombre/.gitignore
 
@@ -88,7 +89,7 @@ EOT
     chmod 0777 $nombre/runtime
     chmod 0777 $nombre/web/assets
 
-    echo -e "$VE Asignando Solo escritura al directorio yii"
+    echo -e "$VE Asignando solo lectura al directorio yii"
     chmod 0755 $nombre/yii
 }
 

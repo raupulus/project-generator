@@ -80,7 +80,7 @@ generarEstructura() {
 
     ## Copia la estructura base dentro del proyecto
     echo -e "$VE Copiando esqueleto de proyecto...$CL"
-    cp -R $1/* "./$nombre/"
+    cp -aR $1/\. "./$nombre/"
 }
 
 ##
@@ -95,9 +95,9 @@ generarBD() {
         sudo service postgresql status > /dev/null || sudo service postgresql start
 
         echo -e "$VE Eliminando BD y usuario$RO $nombre$CL"
-        sudo -u postgres dropdb --if-exists $nombre
-        sudo -u postgres dropdb --if-exists $nombre_test
-        sudo -u postgres dropuser --if-exists $nombre
+        sudo -u postgres dropdb --if-exists "$nombre"
+        sudo -u postgres dropdb --if-exists "$nombre\_test"
+        sudo -u postgres dropuser --if-exists "$nombre"
 
         ./$nombre/db/CrearDB.sh
 
