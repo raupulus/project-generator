@@ -10,5 +10,20 @@ addons:
     postgresql: "9.6"
     chrome: stable
 
+before_install: phpenv config-rm xdebug.ini
+
+install:
+    - composer install --no-interaction
+
+before_script:
+    - db/CrearDB.sh travis
+    - db/Cargar_Datos.sh test
+    - tests/download-chromedriver.sh
+    - tests/run-acceptance.sh
+
+script:
+    - vendor/bin/codecept run
+    - vendor/bin/phpcs
+
 notifications:
     email: false

@@ -23,7 +23,7 @@ DIR=$(dirname "$SCRIPT")
 
 ## Solo inyecta en la BD si entra en modo test
 if [[ "$1" != 'test' ]]; then
-    psql -h localhost -U proyecto proyecto < $DIR/datos.sql
+    psql -h localhost -U proyecto proyecto < $DIR/proyecto.sql
 fi
 
-psql -h localhost -U proyecto proyecto_test < $DIR/datos.sql
+psql -h localhost -U proyecto proyecto_test < $DIR/proyecto.sql
