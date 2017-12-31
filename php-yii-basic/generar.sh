@@ -86,11 +86,11 @@ EOT
     sed -i 's/[[:blank:]]*$//' $nombre/config/test.php
 
     echo -e "$VE Añadiendo permisos de escritura a directorios temporales$CL"
-    chmod 0777 $nombre/runtime
-    chmod 0777 $nombre/web/assets
+    chmod 777 $nombre/runtime
+    chmod 777 $nombre/web/assets
 
     echo -e "$VE Asignando solo lectura al directorio yii"
-    chmod 0755 $nombre/yii
+    chmod 755 $nombre/yii
 }
 
 ###########################
