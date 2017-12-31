@@ -63,6 +63,6 @@ fi
 ## Añadir dicha marca de tiempo al .gitignore
 
 ## LLamada al script principal del repositorio main.sh
-$WORKSCRIPT/main.sh
+$WORKSCRIPT/main.sh "$WORKSCRIPT"
 
 exit 0

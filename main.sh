@@ -19,13 +19,6 @@
 ## Script principal que gestiona todo el programa
 
 ############################
-##     IMPORTACIONES      ##
-############################
-source './funciones.sh'
-source './php-yii-basic/generar.sh'
-source './php-yii-advanced/generar.sh'
-
-############################
 ##       CONSTANTES       ##
 ############################
 AM="\033[1;33m"  ## Color Amarillo
@@ -38,12 +31,20 @@ RO="\033[1;31m"  ## Color Rojo
 VE="\033[1;32m"  ## Color Verde
 CL="\e[0m"       ## Limpiar colores
 
-WORKSCRIPT=$PWD  ## Directorio principal del script
+WORKSCRIPT=$1    ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
+
+############################
+##     IMPORTACIONES      ##
+############################
+source "$WORKSCRIPT/funciones.sh"
+source "$WORKSCRIPT/php-yii-basic/generar.sh"
+source "$WORKSCRIPT/php-yii-advanced/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
 ###########################
+nombre=''  ## El nombre del proyecto
 
 ###########################
 ##       FUNCIONES       ##
