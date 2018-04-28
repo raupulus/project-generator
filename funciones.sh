@@ -39,9 +39,8 @@
 ## Pide introducir un nombre para crear el proyecto
 ##
 nombreProyecto() {
-    nombre=''
     ## Pide el nombre del proyecto
-    while [[ -z $nombre ]]; do
+    while [[ -z "$nombre" ]]; do
         clear
         echo -e "$VE Introduce el nombre del proyecto$RO"
         read -p '  → ' nombre
@@ -118,7 +117,7 @@ permisos() {
     echo -e "$VE Asignando dueños y permisos$CL"
     echo -e "$VE Usuario →$RO $USER$CL"
     echo -e "$VE Grupo   →$RO www-data$CL"
-    chmod 755 -R "$nombre"
+    chmod 775 -R "$nombre"
     chown "$USER:www-data" -R "$nombre"
 }
 ##
