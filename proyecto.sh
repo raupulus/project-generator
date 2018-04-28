@@ -50,17 +50,25 @@ fi
 if [[ ! -d "$WORKSCRIPT" ]] || [[ ! -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
     read -p '¿Clonar de nuevo el directorio en el mismo lugar? s/N' entrada
-    if [[ $entrada = 's' ]] || [[ "$entrada" = "S" ]]; then
+    if [[ "$entrada" = 's' ]] || [[ "$entrada" = "S" ]]; then
         echo -e "$VE Preparando para clonar repositorio$CL"
-        git clone https://github.com/fryntiz/Generador_Proyectos.git $WORKSCRIPT || exit 1
+        git 'clone https://github.com/fryntiz/Generador_Proyectos.git' "$WORKSCRIPT" || exit 1
     else
-        echo -e "$VE No se clona el repositorio$CL"
+        echo -e "$VE No se clona el repositorio, error al intentar regenerar$CL"
         exit 1
     fi
 fi
 
-## Generar marca de tiempo dentro del repositorio y si hace más de 1 día que no se actualiza ejecutar un → git pull
-## Añadir dicha marca de tiempo al .gitignore
+## Actualizar repositorio
+function actualizar_proyectos() {
+    local diractual=$(pwd)
+    cd "$WORKSCRIPT" || exit 1
+    git checkout -- .
+    git pull
+    cd $diractual || exit 1
+}
+
+actualizar_proyectos
 
 ## LLamada al script principal del repositorio main.sh
 $WORKSCRIPT/main.sh "$WORKSCRIPT"
