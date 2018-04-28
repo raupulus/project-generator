@@ -33,91 +33,42 @@
 ##       FUNCIONES       ##
 ###########################
 preconfiguraciones() {
-    echo -e "$VE Generando Preconfiguraciones$CL"
-    composer create-project --no-install --no-scripts yiisoft/yii2-app-basic $nombre
+    echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
 }
 
 instalacion() {
-    echo -e "$VE Instalando$CL"
-    local dirActual=$PWD
-    cd $nombre
-    composer install --no-scripts
-    composer run-script post-create-project-cmd
-    cd $dirActual
+    echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
+    composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
 }
 
 postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-    ## Temporalmente se obtiene el proyecto del repositorio "ricpelo/propuesta" ##
-    FILES="check-ghi.sh check-label.sh Makefile.proyecto requisitos.php requisitos.xlsx"
-
-    FILES=$(for p in $(echo $FILES); do echo "ricpelo-propuesta-*/$p"; done)
-    curl -s -L https://github.com/ricpelo/propuesta/tarball/master | tar xz --strip-components=1 -C $nombre/docs --wildcards $(echo $FILES)
-
-    mv -f $nombre/docs/Makefile.proyecto $nombre/docs/Makefile
-    ## Hasta aquí ##
-
-    echo -e "$VE Modificando configuración del proyecto...$AM"
-    for x in $nombre/config/web.php \
-             $nombre/config/console.php
-    do
-        sed -r -i "s%^(\\\$db = require __DIR__ . '/db.php';)$%\1\n\\\$log = require __DIR__ . '/log.php';%" $x
-        sed -r -zi "s%(\s*)'log' => \[.*\1\],\1'%\1'log' => \\\$log,\1'%" $x
-    done
-    read -r -d '' SUB <<'EOT'
-    'aliases' => [
-        '\@bower' => '\@vendor/bower-asset',
-        '\@npm'   => '\@vendor/npm-asset',
-    ],
-EOT
-    perl -i -0pe "s%(\s*)'components'%\1$SUB\1'components'%" $nombre/config/console.php
-
-    ## Añadir a la lista de ignorar de git
-    echo -e "\ntests/chromedriver" >> $nombre/.gitignore
-    echo -e "\n.php_cs.cache" >> $nombre/.gitignore
-
-    echo -e "$VE Modificando archivos con el nombre del proyecto...$AM"
-    sed -i s/proyecto/$nombre/g $nombre/db/* $nombre/config/*
-    mv $nombre/db/datos.sql $nombre/db/$nombre.sql
-    mv $nombre/proyecto.conf $nombre/$nombre.conf
-    sed -i s/proyecto/$nombre/g $nombre/$nombre.conf
-
-    echo -e "$VE Eliminando espacios en blanco sobrantes de config/test.php...$CL"
-    sed -i 's/[[:blank:]]*$//' $nombre/config/test.php
-
-    echo -e "$VE Añadiendo permisos de escritura a directorios temporales$CL"
-    chmod 777 $nombre/runtime
-    chmod 777 $nombre/web/assets
-
-    echo -e "$VE Asignando solo lectura al directorio yii"
-    chmod 755 $nombre/yii
+    local dirActual=$PWD
+    cd "$nombre" || exit 1
+    echo -e "$VE Asigando permisos$CL"
+    make permisos
+    cd "$dirActual" || exit 1
 }
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
+## Recibe el nombre del proyecto a crear y lo genera
 generar_php_yii_basic() {
     echo -e "$VE Generador de proyecto YII Básico$CL"
-
-    ## Pide nombre para el directorio del proyecto
-    nombreProyecto
 
     ## Comprueba si ya existe un proyecto
     compruebaExisteProyecto
 
     preconfiguraciones
-
-    ## Generar estructura básica
-    generarEstructura "$WORKSCRIPT/php-yii-basic/estructura"
-
     instalacion
     postconfiguraciones
 
     ## Crear Base de Datos
-    generarBD
+    #generarBD
 
     ## Asigna permisos necesarios
-    permisos
+    #permisos
 
     ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
     inicializar_GIT
