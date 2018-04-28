@@ -19,6 +19,8 @@
 ## Este script se enlazará dentro de /home/$USER/.local/bin/proyecto
 ## Será el lanzador de "main.sh" tras comprobar que existe el repositorio
 ## y actualizarlo si procede para traer cambios.
+## $1 Recibe como primer parámetro el tipo de proyecto
+## $2 Recibe como segundo parámetro el nombre para el proyecto (Opcional)
 
 ############################
 ##       CONSTANTES       ##
@@ -71,6 +73,6 @@ function actualizar_proyectos() {
 actualizar_proyectos
 
 ## LLamada al script principal del repositorio main.sh
-$WORKSCRIPT/main.sh "$WORKSCRIPT"
+$WORKSCRIPT/main.sh "$WORKSCRIPT" "$1" "$2"
 
 exit 0
