@@ -17,6 +17,8 @@
 ##     INSTRUCCIONES      ##
 ############################
 ## Script principal que gestiona todo el programa
+## $1 Recibe como primer parámetro el tipo de proyecto
+## $2 Recibe como segundo parámetro el nombre para el proyecto (Opcional)
 
 ############################
 ##       CONSTANTES       ##
@@ -31,7 +33,7 @@ RO="\033[1;31m"  ## Color Rojo
 VE="\033[1;32m"  ## Color Verde
 CL="\e[0m"       ## Limpiar colores
 
-WORKSCRIPT=$1    ## Directorio principal del script recibido en la llamada
+WORKSCRIPT="$1"    ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
 
 ############################
@@ -66,20 +68,38 @@ menu_principal() {
         echo -e "$CL"
 
         case $entrada in
-
             1) generar_php_yii_basic && exit 0;;
             2) generar_php_yii_advanced && exit 0;;
-
             0) exit 0;;
-            *) clear; echo -e "$RO Opción no válida$CL"; read x;;
+            *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
     done
+}
+
+proyectos() {
+    ## Comprueba nombre o lo pide
+    if [[ -z "$2" ]]; then
+        nombreProyecto  ## Pide el nombre de proyecto
+    else
+        nombre="$2"     ## Asigna el nombre introducido
+    fi
+
+    ## Ejecuta el script generador correspondiente o sale con aviso y error
+    case "$1" in
+        'yii' | 'yii2') generar_php_yii_basic "$nombre"&& exit 0;;
+        *) clear; echo -e "$RO Tipo de proyecto$RO no válido$CL"; exit 1;;
+    esac
 }
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
 
-menu_principal
+case $@ in
+    0) menu_principal;;
+    1) proyectos "$1";;
+    2) proyectos "$1" "$2";;
+    *) clear; echo -e "$RO Opción no válida$CL";;
+esac
 
 exit 0
