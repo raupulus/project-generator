@@ -116,7 +116,7 @@ subir_github() {
        ([[ "$input" = s ]] || [[ "$input" = S ]])
     then
         ## Creo repositorio pidiendo descripción
-        echo -e '$RO Descripción del repositorio:$AM'
+        echo -e "$RO Descripción del repositorio:$AM"
         read -p '  → ' descripcion
         hub create -d "$descripcion"
         git push -u origin master
