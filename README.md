@@ -8,6 +8,8 @@ Se creará un comando solo para el usuario que podrá llamarse desde cualquier p
 
 Tras crear la estructura nos preguntará si inicializar el repositorio y después si crear un repositorio en github asociado al mismo.
 
+![Imagen de previsualización](docs/preview.png)
+
 ## Requisitos
 
 Para que funcione la subida a repositorio en github debes tener **hub** bien
@@ -65,6 +67,8 @@ El resultado o acciones serán ejecutadas en el mismo directorio donde nos
 encontremos actualmente por lo que primero deberemos entrar en el directorio de
 trabajo.
 
+![Imagen de previsualización](docs/preview1.png)
+
 ### Modo directo
 
 El modo directo nos permite introducir como primer parámetro el comando puede
@@ -80,6 +84,8 @@ Quedando un ejemplo como el siguiente:
 ```bash
     proyecto yii2 web_curriculum
 ```
+
+![Imagen de previsualización](docs/preview2.png)
 
 ## Proyectos implementados
 
