@@ -17,8 +17,9 @@
 ##     INSTRUCCIONES      ##
 ############################
 ## Script principal que gestiona todo el programa
-## $1 Recibe como primer parámetro el tipo de proyecto
-## $2 Recibe como segundo parámetro el nombre para el proyecto (Opcional)
+## $1 Recibe como primer parámetro la ruta donde trabajar
+## $2 Recibe como segundo parámetro el tipo de proyecto (Opcional)
+## $3 Recibe como tercer parámetro el nombre para el proyecto (Opcional)
 
 ############################
 ##       CONSTANTES       ##
@@ -76,6 +77,10 @@ menu_principal() {
     done
 }
 
+## Recibe el tipo de proyecto y ejecuta la función correspondiente,
+## opcionalmente admite recibir el nombre del proyecto.
+## $1 Tipo de proyecto
+## $2 Nombre del proyecto (Opcional)
 proyectos() {
     ## Comprueba nombre o lo pide
     if [[ -z "$2" ]]; then
@@ -94,12 +99,16 @@ proyectos() {
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-
-case $@ in
-    0) menu_principal;;
-    1) proyectos "$1";;
-    2) proyectos "$1" "$2";;
-    *) clear; echo -e "$RO Opción no válida$CL";;
-esac
+echo $#
+if [[ $# = 1 ]]; then
+    menu_principal
+elif [[ $# = 2 ]]; then
+    proyectos "$2"
+elif [[ $# = 3 ]]; then
+    proyectos "$2" "$3"
+else
+    clear
+    echo -e "$RO Opción no válida$CL"
+fi
 
 exit 0
