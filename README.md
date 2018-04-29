@@ -100,6 +100,25 @@ Las plantillas de proyectos implementadas hasta el momento son:
 -   Plantilla → Indica sobre que plantilla oficial está basado el esqueleto.
 -   Custom    → Indica si está personalizada o es igual que la oficial.
 
+## Menú de ayuda
+
+El comando incluye una ayuda donde se puede ver en cualquier momento y desde
+cualquier parte la sintaxis, el orden y los proyectos que se pueden generar.
+
+Podemos utilizar cualquiera de las dos formas siguientes para invocar la ayuda:
+
+```bash
+    proyecto -h
+```
+
+```bash
+    proyecto --help
+```
+
+Resultando una ayuda como en la imagen a continuación:
+
+![Imagen de previsualización](docs/preview3.png)
+
 ## A tener en cuenta
 
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
