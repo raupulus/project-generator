@@ -99,7 +99,6 @@ proyectos() {
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-echo $#
 if [[ $# = 1 ]]; then
     menu_principal
 elif [[ $# = 2 ]]; then

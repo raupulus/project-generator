@@ -110,9 +110,17 @@ permisos() {
 ##
 subir_github() {
     ## Preguntar si quiere subir a github el repositorio
-    echo -e "$VE Subiendo repositorio a GitHub$CL"
-
-    ## TODO → Plantear con "hub" para crear repositorio remoto y subirlo
+    echo -e "$VE ¿Subir repositorio a GitHub?$CL"
+    read -p '  s/N → ' input
+    if [[ -f '/usr/local/bin/hub' ]] &&
+       ([[ "$input" = s ]] || [[ "$input" = S ]])
+    then
+        ## Creo repositorio pidiendo descripción
+        echo -e '$RO Descripción del repositorio:$AM'
+        read -p '  → ' descripcion
+        hub create -d "$descripcion"
+        git push -u origin master
+    fi
 }
 
 ##
@@ -120,15 +128,19 @@ subir_github() {
 ## $1  String  Recibe el nombre del directorio donde inicializar
 ##
 inicializar_GIT() {
-    ## Preguntar si quiere iniciar repositorio GIT, si no existe y no hay un directorio ".git"
-
-    ## Entrar al repositorio
+    ## Pregunto si iniciar repositorio, si existe y no hay un directorio ".git"
     local dirActual=$PWD
-    cd $nombre
-    git init -q
-    git add .
-    git commit -q -m "Proyecto recién generado"
+
+    if [[ -d "$nombre" ]] && [[ ! -d "$nombre/.git" ]]; then
+        ## Entrar al repositorio
+        cd "$nombre" || return 0
+        git init -q
+        git add .
+        git commit -q -m "Commit inicial de Proyecto recién generado"
+    fi
 
     ## Llama a la función que sube el repositorio a GitHub
     subir_github
+
+    cd "$dirActual" || exit 1
 }
