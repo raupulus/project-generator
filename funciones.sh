@@ -38,12 +38,12 @@ nombreProyecto() {
 ##
 compruebaExisteProyecto() {
     ## Comprueba que no exista
-    if [[ -d $nombre ]]; then
+    if [[ -d "$nombre" ]]; then
         echo -e "$RO Ya existe el directorio$AM $nombre$CL"
         echo -e "$VE ¿Quieres$RO BORRAR$VE y generarlo de nuevo?$RO"
         read -p '  s/N → ' opcion
         if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
-            rm -Rf $nombre
+            rm -Rf "$nombre"
         else
             echo -e "$VE Has elegido no borrarlo, no se puede continuar$CL"
             exit 1
@@ -57,9 +57,9 @@ compruebaExisteProyecto() {
 ##
 generarEstructura() {
     ## Crear el directorio si no existe
-    if [[ ! -d $nombre ]]; then
+    if [[ ! -d "$nombre" ]]; then
         echo -e "$VE Creando directorio$RO $nombre$CL"
-        mkdir $nombre
+        mkdir "$nombre"
     fi
 
     ## Copia la estructura base dentro del proyecto
