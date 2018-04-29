@@ -63,6 +63,7 @@ fi
 
 ## Actualizar repositorio
 function actualizar_proyectos() {
+    echo -e "$VE Actualizando scripts$CL"
     local diractual=$(pwd)
     cd "$WORKSCRIPT" || exit 1
     git checkout -- .
