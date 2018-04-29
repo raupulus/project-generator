@@ -48,6 +48,19 @@ if [[ "$USER" = 'root' ]]; then
     exit 1
 fi
 
+## Si pide ayuda se muestra este menú
+if [[ "$1" = '-h' ]] || [[ "$1" = '--help' ]]; then
+    echo -e "$VE Menú de ayuda$CL"
+    echo ''
+    echo -e "$AZ Sintaxis:$RO proyecto$MA tipo$AM nombre$CL"
+    echo ''
+    echo -e "$AZ Tipos de proyectos:$CL"
+    echo -e "$RO yii$VE → Genera estructura de Yii2 framework php$CL"
+    echo -e "$RO yii2$VE → Genera estructura de Yii2 framework php$CL"
+
+    exit 0
+fi
+
 ## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
 if [[ ! -d "$WORKSCRIPT" ]] || [[ ! -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
