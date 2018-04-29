@@ -1,4 +1,5 @@
 # Generador_Proyectos
+
 Genera la estructura entre varios proyectos de los más recurridos en mi trabajo
 
 El objetivo principal de este repositorio es crear de una forma sencilla un proyecto entre los cuales dejo planteado, mediante un menú de selección.
@@ -7,16 +8,42 @@ Se creará un comando solo para el usuario que podrá llamarse desde cualquier p
 
 Tras crear la estructura nos preguntará si inicializar el repositorio y después si crear un repositorio en github asociado al mismo.
 
-# Este proyecto está aún en fase de construcción y puede no cumplir sus objetivos o no realizarlo correctamente.
+## Requisitos
+
+Para que funcione la subida a repositorio en github debes tener **hub** bien
+configurado en el sistema. Más información en https://github.com/github/hub
+
+Es fundamental tener instalado **git** en el sistema. En debian:
+
+```bash
+    sudo apt install git
+```
+
+El script está orientado a distribuciones GNU/Linux y solo se ha probado
+en Debian GNU/Linux stable por lo que no se garantiza el funcionamiento en
+otros sistemas o incluso otras ramas de la misma distribución.
+
+Más información sobre Debian: https://www.debian.org/
+
+Para aplicaciones o frameworks php es necesario tener instalado **composer**.
+Más sobre comoser: https://getcomposer.org/
+
+Para aplicaciones o frameworks python es necesario tener instalado **pip** y/o
+**pip3** para python3. Más información: https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)
+
 
 ## A tener en cuenta
+
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
 
-Se parte de haber preparado el script con uno de los siguientes **scripts** propios:
+Se parte de haber preparado el script con una de las siguientes
+**herramientas** o conjunto de **scripts** propios:
+
 - https://github.com/fryntiz/Fedora_Developer_Init
 - https://github.com/fryntiz/Debian_Developer_Init
 
 La Guía de **estilos** usada para la sintaxis en **bash** es la siguiente:
+
 - https://github.com/fryntiz/Bash_Style_Guide
 
 Se deberá tener configurado gestores de paquetes para cada **proyecto** y para **git**:
