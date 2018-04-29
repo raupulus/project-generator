@@ -31,6 +31,20 @@ Más sobre comoser: https://getcomposer.org/
 Para aplicaciones o frameworks python es necesario tener instalado **pip** y/o
 **pip3** para python3. Más información: https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)
 
+## Instalación
+
+El primer paso es obtener el repositorio:
+
+```bash
+    git clone https://github.com/fryntiz/Generador_Proyectos.git
+```
+
+Para instalar este script solo hay que ejecutar **instalar.sh**:
+
+```bash
+    cd Generador_Proyectos
+    ./instalar.sh
+```
 
 ## A tener en cuenta
 
