@@ -34,8 +34,9 @@ RO="\033[1;31m"  ## Color Rojo
 VE="\033[1;32m"  ## Color Verde
 CL="\e[0m"       ## Limpiar colores
 
-WORKSCRIPT="$1"    ## Directorio principal del script recibido en la llamada
+WORKSCRIPT="$1"  ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
+VERSION='0.0.1'  ## Versión en desarrollo
 
 ############################
 ##     IMPORTACIONES      ##
@@ -59,7 +60,7 @@ menu_principal() {
         echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
         echo ""
         echo -e "$RO 1)$AZ Proyecto PHP YII Básico$CL"
-        echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
+        #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
         #echo -e "$RO 3)$AZ Proyecto PHP Laravel$CL"
         #echo -e "$RO 4)$AZ Proyecto Python Django$CL"
         echo -e "$RO 0)$AZ Salir$CL"
@@ -70,7 +71,7 @@ menu_principal() {
 
         case $entrada in
             1) generar_php_yii_basic && exit 0;;
-            2) generar_php_yii_advanced && exit 0;;
+            #2) generar_php_yii_advanced && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
