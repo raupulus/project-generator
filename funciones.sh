@@ -20,21 +20,6 @@
 ## los demás scrips que componen el programa, con el fin de repetir la menor
 ## cantidad de código posible.
 
-############################
-##     IMPORTACIONES      ##
-############################
-
-############################
-##       CONSTANTES       ##
-############################
-
-###########################
-##       VARIABLES       ##
-###########################
-
-###########################
-##       FUNCIONES       ##
-###########################
 ##
 ## Pide introducir un nombre para crear el proyecto
 ##
