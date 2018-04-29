@@ -68,12 +68,19 @@ function actualizar_proyectos() {
     cd "$WORKSCRIPT" || exit 1
     git checkout -- .
     git pull
+    ./instalar.sh
     cd $diractual || exit 1
 }
 
 actualizar_proyectos
 
 ## LLamada al script principal del repositorio main.sh
-$WORKSCRIPT/main.sh "$WORKSCRIPT" "$1" "$2"
+if [[ $# = 1 ]]; then
+    $WORKSCRIPT/main.sh "$WORKSCRIPT" "$1"
+elif [[ $# = 2 ]]; then
+    $WORKSCRIPT/main.sh "$WORKSCRIPT" "$1" "$2"
+else
+    $WORKSCRIPT/main.sh "$WORKSCRIPT"
+fi
 
 exit 0
