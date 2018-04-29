@@ -62,7 +62,7 @@ cp "$WORKSCRIPT/proyecto.sh" "/home/$USER/.local/bin/proyecto"
 chmod 750 "/home/$USER/.local/bin/proyecto"
 
 ## Asignar propietario
-sudo chown "$USER:$USER" "/home/$USER/.local/bin/proyecto"
+chown "$USER:$USER" "/home/$USER/.local/bin/proyecto"
 
 ## Reemplaza la ruta hacia el directorio del script en el archivo copiado
 ## Observar que el delimitador no es "/" sino que lo cambio a "|"
