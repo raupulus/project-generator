@@ -81,6 +81,14 @@ Quedando un ejemplo como el siguiente:
     proyecto yii2 web_curriculum
 ```
 
+## Proyectos implementados
+
+Las plantillas de proyectos implementadas hasta el momento son:
+
+|   Lenguaje   |  framework   |   Plantilla  |    Custom    |
+| :----------: | :----------: | :----------: | :----------: |
+|     php      |     yii2     |    Básica    |      Si      |
+
 ## A tener en cuenta
 
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
