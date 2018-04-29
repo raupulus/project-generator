@@ -46,6 +46,26 @@ Para instalar este script solo hay que ejecutar **instalar.sh**:
     ./instalar.sh
 ```
 
+## Funcionamiento
+
+Hay dos formas de usar este script:
+
+### Modo interactivo
+
+Pide paso por paso cada acción a realizar a través de un menú interactivo dónde
+se introduce el número de la opción a realizar.
+
+Para entrar de este modo solo es necesario escribir en un terminal:
+
+```bash
+    proyecto
+```
+
+El resultado o acciones serán ejecutadas en el mismo directorio donde nos
+encontremos actualmente por lo que primero deberemos entrar en el directorio de
+trabajo.
+
+
 ## A tener en cuenta
 
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
