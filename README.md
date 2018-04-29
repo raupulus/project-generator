@@ -89,6 +89,11 @@ Las plantillas de proyectos implementadas hasta el momento son:
 | :----------: | :----------: | :----------: | :----------: |
 |     php      |     yii2     |    Básica    |      Si      |
 
+-   Lenguaje  → Indica para que lenguaje de programación está orientado.
+-   Framework → Indica el framework del cual crea el esqueleto (si lo hubiera).
+-   Plantilla → Indica sobre que plantilla oficial está basado el esqueleto.
+-   Custom    → Indica si está personalizada o es igual que la oficial.
+
 ## A tener en cuenta
 
 Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
