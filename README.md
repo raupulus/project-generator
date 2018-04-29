@@ -65,6 +65,21 @@ El resultado o acciones serán ejecutadas en el mismo directorio donde nos
 encontremos actualmente por lo que primero deberemos entrar en el directorio de
 trabajo.
 
+### Modo directo
+
+El modo directo nos permite introducir como primer parámetro el comando puede
+recibir el tipo de proyecto y como segundo parámetro el nombre del proyecto
+resultando la siguiente sintaxis:
+
+```bash
+    proyecto tipo nombre
+```
+
+Quedando un ejemplo como el siguiente:
+
+```bash
+    proyecto yii2 web_curriculum
+```
 
 ## A tener en cuenta
 
