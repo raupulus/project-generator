@@ -20,28 +20,12 @@
 ## los demás scrips que componen el programa, con el fin de repetir la menor
 ## cantidad de código posible.
 
-############################
-##     IMPORTACIONES      ##
-############################
-
-############################
-##       CONSTANTES       ##
-############################
-
-###########################
-##       VARIABLES       ##
-###########################
-
-###########################
-##       FUNCIONES       ##
-###########################
 ##
 ## Pide introducir un nombre para crear el proyecto
 ##
 nombreProyecto() {
-    nombre=''
     ## Pide el nombre del proyecto
-    while [[ -z $nombre ]]; do
+    while [[ -z "$nombre" ]]; do
         clear
         echo -e "$VE Introduce el nombre del proyecto$RO"
         read -p '  → ' nombre
@@ -54,12 +38,12 @@ nombreProyecto() {
 ##
 compruebaExisteProyecto() {
     ## Comprueba que no exista
-    if [[ -d $nombre ]]; then
+    if [[ -d "$nombre" ]]; then
         echo -e "$RO Ya existe el directorio$AM $nombre$CL"
         echo -e "$VE ¿Quieres$RO BORRAR$VE y generarlo de nuevo?$RO"
         read -p '  s/N → ' opcion
         if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
-            rm -Rf $nombre
+            rm -Rf "$nombre"
         else
             echo -e "$VE Has elegido no borrarlo, no se puede continuar$CL"
             exit 1
@@ -73,9 +57,9 @@ compruebaExisteProyecto() {
 ##
 generarEstructura() {
     ## Crear el directorio si no existe
-    if [[ ! -d $nombre ]]; then
+    if [[ ! -d "$nombre" ]]; then
         echo -e "$VE Creando directorio$RO $nombre$CL"
-        mkdir $nombre
+        mkdir "$nombre"
     fi
 
     ## Copia la estructura base dentro del proyecto
@@ -118,7 +102,7 @@ permisos() {
     echo -e "$VE Asignando dueños y permisos$CL"
     echo -e "$VE Usuario →$RO $USER$CL"
     echo -e "$VE Grupo   →$RO www-data$CL"
-    chmod 755 -R "$nombre"
+    chmod 775 -R "$nombre"
     chown "$USER:www-data" -R "$nombre"
 }
 ##
@@ -126,9 +110,17 @@ permisos() {
 ##
 subir_github() {
     ## Preguntar si quiere subir a github el repositorio
-    echo -e "$VE Subiendo repositorio a GitHub$CL"
-
-    ## TODO → Plantear con "hub" para crear repositorio remoto y subirlo
+    echo -e "$VE ¿Subir repositorio a GitHub?$CL"
+    read -p '  s/N → ' input
+    if [[ -f '/usr/local/bin/hub' ]] &&
+       ([[ "$input" = s ]] || [[ "$input" = S ]])
+    then
+        ## Creo repositorio pidiendo descripción
+        echo -e "$RO Descripción del repositorio:$AM"
+        read -p '  → ' descripcion
+        hub create -d "$descripcion"
+        git push -u origin master
+    fi
 }
 
 ##
@@ -136,15 +128,19 @@ subir_github() {
 ## $1  String  Recibe el nombre del directorio donde inicializar
 ##
 inicializar_GIT() {
-    ## Preguntar si quiere iniciar repositorio GIT, si no existe y no hay un directorio ".git"
-
-    ## Entrar al repositorio
+    ## Pregunto si iniciar repositorio, si existe y no hay un directorio ".git"
     local dirActual=$PWD
-    cd $nombre
-    git init -q
-    git add .
-    git commit -q -m "Proyecto recién generado"
+
+    if [[ -d "$nombre" ]] && [[ ! -d "$nombre/.git" ]]; then
+        ## Entrar al repositorio
+        cd "$nombre" || return 0
+        git init -q
+        git add .
+        git commit -q -m "Commit inicial de Proyecto recién generado"
+    fi
 
     ## Llama a la función que sube el repositorio a GitHub
     subir_github
+
+    cd "$dirActual" || exit 1
 }

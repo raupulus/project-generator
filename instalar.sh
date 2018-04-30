@@ -42,17 +42,8 @@ WORKSCRIPT=$PWD  ## Directorio principal del script
 USER=$(whoami)   ## Usuario que ejecuta el script
 
 ###########################
-##       VARIABLES       ##
-###########################
-
-###########################
-##       FUNCIONES       ##
-###########################
-
-###########################
 ##       EJECUCIÓN       ##
 ###########################
-
 if [[ "$USER" = 'root' ]]; then
     echo -e "$RO No se contempla root por motivos de seguridad.$CL"
     echo -e "$VE Saliendo del scrip. Ejecútalo como usuario.$CL"
@@ -68,10 +59,10 @@ fi
 cp "$WORKSCRIPT/proyecto.sh" "/home/$USER/.local/bin/proyecto"
 
 ## Dar permisos
-chmod 755 "/home/$USER/.local/bin/proyecto"
+chmod 750 "/home/$USER/.local/bin/proyecto"
 
 ## Asignar propietario
-sudo chown "$USER:$USER" "/home/$USER/.local/bin/proyecto"
+chown "$USER:$USER" "/home/$USER/.local/bin/proyecto"
 
 ## Reemplaza la ruta hacia el directorio del script en el archivo copiado
 ## Observar que el delimitador no es "/" sino que lo cambio a "|"

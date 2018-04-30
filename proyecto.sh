@@ -19,6 +19,8 @@
 ## Este script se enlazará dentro de /home/$USER/.local/bin/proyecto
 ## Será el lanzador de "main.sh" tras comprobar que existe el repositorio
 ## y actualizarlo si procede para traer cambios.
+## $1 Recibe como primer parámetro el tipo de proyecto
+## $2 Recibe como segundo parámetro el nombre para el proyecto (Opcional)
 
 ############################
 ##       CONSTANTES       ##
@@ -46,23 +48,52 @@ if [[ "$USER" = 'root' ]]; then
     exit 1
 fi
 
+## Si pide ayuda se muestra este menú
+if [[ "$1" = '-h' ]] || [[ "$1" = '--help' ]]; then
+    echo -e "$VE Menú de ayuda$CL"
+    echo ''
+    echo -e "$AZ Sintaxis:$RO proyecto$MA tipo$AM nombre$CL"
+    echo ''
+    echo -e "$AZ Tipos de proyectos:$CL"
+    echo -e "$RO yii$VE → Genera estructura de Yii2 framework php$CL"
+    echo -e "$RO yii2$VE → Genera estructura de Yii2 framework php$CL"
+
+    exit 0
+fi
+
 ## Si no existe proyecto → git clone ¿? (Preguntar si descargar de nuevo)
 if [[ ! -d "$WORKSCRIPT" ]] || [[ ! -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
     read -p '¿Clonar de nuevo el directorio en el mismo lugar? s/N' entrada
-    if [[ $entrada = 's' ]] || [[ "$entrada" = "S" ]]; then
+    if [[ "$entrada" = 's' ]] || [[ "$entrada" = "S" ]]; then
         echo -e "$VE Preparando para clonar repositorio$CL"
-        git clone https://github.com/fryntiz/Generador_Proyectos.git $WORKSCRIPT || exit 1
+        git 'clone https://github.com/fryntiz/Generador_Proyectos.git' "$WORKSCRIPT" || exit 1
     else
-        echo -e "$VE No se clona el repositorio$CL"
+        echo -e "$VE No se clona el repositorio, error al intentar regenerar$CL"
         exit 1
     fi
 fi
 
-## Generar marca de tiempo dentro del repositorio y si hace más de 1 día que no se actualiza ejecutar un → git pull
-## Añadir dicha marca de tiempo al .gitignore
+## Actualizar repositorio
+function actualizar_proyectos() {
+    echo -e "$VE Actualizando scripts$CL"
+    local diractual=$(pwd)
+    cd "$WORKSCRIPT" || exit 1
+    git checkout -- .
+    git pull
+    ./instalar.sh
+    cd $diractual || exit 1
+}
+
+actualizar_proyectos
 
 ## LLamada al script principal del repositorio main.sh
-$WORKSCRIPT/main.sh "$WORKSCRIPT"
+if [[ $# = 1 ]]; then
+    $WORKSCRIPT/main.sh "$WORKSCRIPT" "$1"
+elif [[ $# = 2 ]]; then
+    $WORKSCRIPT/main.sh "$WORKSCRIPT" "$1" "$2"
+else
+    $WORKSCRIPT/main.sh "$WORKSCRIPT"
+fi
 
 exit 0

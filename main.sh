@@ -17,6 +17,9 @@
 ##     INSTRUCCIONES      ##
 ############################
 ## Script principal que gestiona todo el programa
+## $1 Recibe como primer parámetro la ruta donde trabajar
+## $2 Recibe como segundo parámetro el tipo de proyecto (Opcional)
+## $3 Recibe como tercer parámetro el nombre para el proyecto (Opcional)
 
 ############################
 ##       CONSTANTES       ##
@@ -31,8 +34,9 @@ RO="\033[1;31m"  ## Color Rojo
 VE="\033[1;32m"  ## Color Verde
 CL="\e[0m"       ## Limpiar colores
 
-WORKSCRIPT=$1    ## Directorio principal del script recibido en la llamada
+WORKSCRIPT="$1"  ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
+VERSION='0.0.1'  ## Versión en desarrollo
 
 ############################
 ##     IMPORTACIONES      ##
@@ -56,7 +60,7 @@ menu_principal() {
         echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
         echo ""
         echo -e "$RO 1)$AZ Proyecto PHP YII Básico$CL"
-        echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
+        #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
         #echo -e "$RO 3)$AZ Proyecto PHP Laravel$CL"
         #echo -e "$RO 4)$AZ Proyecto Python Django$CL"
         echo -e "$RO 0)$AZ Salir$CL"
@@ -66,20 +70,45 @@ menu_principal() {
         echo -e "$CL"
 
         case $entrada in
-
             1) generar_php_yii_basic && exit 0;;
-            2) generar_php_yii_advanced && exit 0;;
-
+            #2) generar_php_yii_advanced && exit 0;;
             0) exit 0;;
-            *) clear; echo -e "$RO Opción no válida$CL"; read x;;
+            *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
     done
+}
+
+## Recibe el tipo de proyecto y ejecuta la función correspondiente,
+## opcionalmente admite recibir el nombre del proyecto.
+## $1 Tipo de proyecto
+## $2 Nombre del proyecto (Opcional)
+proyectos() {
+    ## Comprueba nombre o lo pide
+    if [[ -z "$2" ]]; then
+        nombreProyecto  ## Pide el nombre de proyecto
+    else
+        nombre="$2"     ## Asigna el nombre introducido
+    fi
+
+    ## Ejecuta el script generador correspondiente o sale con aviso y error
+    case "$1" in
+        'yii' | 'yii2') generar_php_yii_basic "$nombre"&& exit 0;;
+        *) clear; echo -e "$RO Tipo de proyecto$RO no válido$CL"; exit 1;;
+    esac
 }
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-
-menu_principal
+if [[ $# = 1 ]]; then
+    menu_principal
+elif [[ $# = 2 ]]; then
+    proyectos "$2"
+elif [[ $# = 3 ]]; then
+    proyectos "$2" "$3"
+else
+    clear
+    echo -e "$RO Opción no válida$CL"
+fi
 
 exit 0
