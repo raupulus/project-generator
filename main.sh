@@ -45,6 +45,7 @@ source "$WORKSCRIPT/funciones.sh"
 source "$WORKSCRIPT/php-yii-basic/generar.sh"
 source "$WORKSCRIPT/php-yii-advanced/generar.sh"
 source "$WORKSCRIPT/python/generar.sh"
+source "$WORKSCRIPT/bash/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
@@ -63,7 +64,7 @@ menu_principal() {
         echo -e "$RO 1)$AZ Proyecto PHP YII Básico$RO (yii|yii2)$CL"
         #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$RO (yii-adv|yii2-adv)$CL"
         #echo -e "$RO 3)$AZ Proyecto PHP Laravel$RO (laravel)$CL"
-        #echo -e "$RO 4)$AZ Proyecto Bash básico$RO (bash)$CL"
+        echo -e "$RO 4)$AZ Proyecto Bash básico$RO (bash)$CL"
         echo -e "$RO 5)$AZ Proyecto Python 3 básico$RO (python|python3)$CL"
         #echo -e "$RO 6)$AZ Proyecto Python 2$RO (python2)$CL"
         #echo -e "$RO 8)$AZ Proyecto Python Django$RO (django)$CL"
@@ -76,6 +77,7 @@ menu_principal() {
         case $entrada in
             1) generar_php_yii_basic && exit 0;;
             #2) generar_php_yii_advanced && exit 0;;
+            4) generar_bash && exit 0;;
             5) generar_python && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
@@ -97,8 +99,9 @@ proyectos() {
 
     ## Ejecuta el script generador correspondiente o sale con aviso y error
     case "$1" in
-        'yii' | 'yii2') generar_php_yii_basic "$nombre"&& exit 0;;
-        'python' | 'python3') generar_python "$nombre"&& exit 0;;
+        'yii' | 'yii2') generar_php_yii_basic && exit 0;;
+        'bash') generar_bash && exit 0;;
+        'python' | 'python3') generar_python && exit 0;;
         *) clear; echo -e "$RO Tipo de proyecto$RO no válido$CL"; exit 1;;
     esac
 }
