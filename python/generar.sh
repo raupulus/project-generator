@@ -38,10 +38,13 @@ python_preconfiguraciones() {
 
 python_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
+    compruebaExisteProyecto
+    generarEstructura "$WORKSCRIPT/python/estructura"
 }
 
 python_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
+    inicializar_GIT
 }
 
 ###########################
