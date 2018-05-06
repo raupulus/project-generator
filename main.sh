@@ -36,7 +36,7 @@ CL="\e[0m"       ## Limpiar colores
 
 WORKSCRIPT="$1"  ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
-VERSION='0.0.1'  ## Versión en desarrollo
+VERSION='0.2.0'  ## Versión en desarrollo
 
 ############################
 ##     IMPORTACIONES      ##
