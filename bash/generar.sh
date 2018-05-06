@@ -2,7 +2,7 @@
 # -*- ENCODING: UTF-8 -*-
 ##
 ## @author     Raúl Caro Pastorino
-## @copyright  Copyright © 2017 Raúl Caro Pastorino
+## @copyright  Copyright © 2018 Raúl Caro Pastorino
 ## @license    https://wwww.gnu.org/licenses/gpl.txt
 ## @email      tecnico@fryntiz.es
 ## @web        www.fryntiz.es
@@ -25,50 +25,38 @@
 ##       CONSTANTES       ##
 ############################
 
-###########################
-##       VARIABLES       ##
-###########################
+############################
+##       VARIABLES        ##
+############################
 
-###########################
-##       FUNCIONES       ##
-###########################
-preconfiguraciones() {
+############################
+##       FUNCIONES        ##
+############################
+bash_preconfiguraciones() {
     echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
 }
 
-instalacion() {
+bash_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
+    compruebaExisteProyecto
+    generarEstructura "$WORKSCRIPT/bash/estructura"
+
+    echo -e "$VE Descargando plantilla$CL"
+    wget 'https://github.com/fryntiz/Debian_Developer_Init/raw/master/conf/home/Plantillas/Gen%C3%A9ricas/Scripts/Script%20Bash.sh' -O "$nombre/main.sh"
 }
 
-postconfiguraciones() {
+bash_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-    local dirActual=$PWD
-    cd "$nombre" || exit 1
-    echo -e "$VE Asigando permisos$CL"
-    make permisosWEB
-    cd "$dirActual" || exit 1
+    permisos
+    inicializar_GIT
 }
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-generar_php_yii_basic() {
-    echo -e "$VE Generador de proyecto YII Básico$CL"
-
-    ## Comprueba si ya existe un proyecto
-    compruebaExisteProyecto
-
-    preconfiguraciones
-    instalacion
-    postconfiguraciones
-
-    ## Crear Base de Datos
-    #generarBD
-
-    ## Asigna permisos necesarios
-    #permisos
-
-    ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
-    inicializar_GIT
+generar_bash() {
+    echo -e "$VE Generador de proyecto Bash$CL"
+    bash_preconfiguraciones
+    bash_instalacion
+    bash_postconfiguraciones
 }

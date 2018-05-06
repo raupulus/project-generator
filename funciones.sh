@@ -101,10 +101,22 @@ generarBD() {
 permisos() {
     echo -e "$VE Asignando dueños y permisos$CL"
     echo -e "$VE Usuario →$RO $USER$CL"
+    echo -e "$VE Grupo   →$RO $USER$CL"
+    chmod 755 -R "$nombre"
+    chown "$USER:$USER" -R "$nombre"
+}
+
+##
+## Establece permisos correspondientes para el nuevo proyecto WEB
+##
+permisosWEB() {
+    echo -e "$VE Asignando dueños y permisos$CL"
+    echo -e "$VE Usuario →$RO $USER$CL"
     echo -e "$VE Grupo   →$RO www-data$CL"
     chmod 775 -R "$nombre"
     chown "$USER:www-data" -R "$nombre"
 }
+
 ##
 ## Crea un repositorio en remoto en github y sube los cambios
 ##
@@ -129,18 +141,18 @@ subir_github() {
 ##
 inicializar_GIT() {
     ## Pregunto si iniciar repositorio, si existe y no hay un directorio ".git"
-    local dirActual=$PWD
-
     if [[ -d "$nombre" ]] && [[ ! -d "$nombre/.git" ]]; then
+        local dirActual=$PWD
+
         ## Entrar al repositorio
         cd "$nombre" || return 0
         git init -q
         git add .
         git commit -q -m "Commit inicial de Proyecto recién generado"
+
+        ## Llama a la función que sube el repositorio a GitHub
+        subir_github
+
+        cd "$dirActual" || exit 1
     fi
-
-    ## Llama a la función que sube el repositorio a GitHub
-    subir_github
-
-    cd "$dirActual" || exit 1
 }

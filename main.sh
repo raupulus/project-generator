@@ -36,7 +36,7 @@ CL="\e[0m"       ## Limpiar colores
 
 WORKSCRIPT="$1"  ## Directorio principal del script recibido en la llamada
 USER=$(whoami)   ## Usuario que ejecuta el script
-VERSION='0.0.1'  ## Versión en desarrollo
+VERSION='0.2.0'  ## Versión en desarrollo
 
 ############################
 ##     IMPORTACIONES      ##
@@ -44,6 +44,8 @@ VERSION='0.0.1'  ## Versión en desarrollo
 source "$WORKSCRIPT/funciones.sh"
 source "$WORKSCRIPT/php-yii-basic/generar.sh"
 source "$WORKSCRIPT/php-yii-advanced/generar.sh"
+source "$WORKSCRIPT/python/generar.sh"
+source "$WORKSCRIPT/bash/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
@@ -59,10 +61,13 @@ menu_principal() {
         clear
         echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
         echo ""
-        echo -e "$RO 1)$AZ Proyecto PHP YII Básico$CL"
-        #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$CL"
-        #echo -e "$RO 3)$AZ Proyecto PHP Laravel$CL"
-        #echo -e "$RO 4)$AZ Proyecto Python Django$CL"
+        echo -e "$RO 1)$AZ Proyecto PHP YII Básico$RO (yii|yii2)$CL"
+        #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$RO (yii-adv|yii2-adv)$CL"
+        echo -e "$RO 3)$AZ Proyecto Bash básico$RO (bash)$CL"
+        echo -e "$RO 4)$AZ Proyecto Python 3 básico$RO (python|python3)$CL"
+        #echo -e "$RO 5)$AZ Proyecto Python 2$RO (python2)$CL"
+        #echo -e "$RO 6)$AZ Proyecto Python Django$RO (django)$CL"
+        #echo -e "$RO 7)$AZ Proyecto PHP Laravel$RO (laravel)$CL"
         echo -e "$RO 0)$AZ Salir$CL"
         echo ""
         echo -e "$RO Introduce el proyecto"
@@ -72,6 +77,8 @@ menu_principal() {
         case $entrada in
             1) generar_php_yii_basic && exit 0;;
             #2) generar_php_yii_advanced && exit 0;;
+            3) generar_bash && exit 0;;
+            4) generar_python && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
@@ -92,7 +99,9 @@ proyectos() {
 
     ## Ejecuta el script generador correspondiente o sale con aviso y error
     case "$1" in
-        'yii' | 'yii2') generar_php_yii_basic "$nombre"&& exit 0;;
+        'yii' | 'yii2') generar_php_yii_basic && exit 0;;
+        'bash') generar_bash && exit 0;;
+        'python' | 'python3') generar_python && exit 0;;
         *) clear; echo -e "$RO Tipo de proyecto$RO no válido$CL"; exit 1;;
     esac
 }

@@ -2,7 +2,7 @@
 # -*- ENCODING: UTF-8 -*-
 ##
 ## @author     Raúl Caro Pastorino
-## @copyright  Copyright © 2017 Raúl Caro Pastorino
+## @copyright  Copyright © 2018 Raúl Caro Pastorino
 ## @license    https://wwww.gnu.org/licenses/gpl.txt
 ## @email      tecnico@fryntiz.es
 ## @web        www.fryntiz.es
@@ -25,50 +25,39 @@
 ##       CONSTANTES       ##
 ############################
 
-###########################
-##       VARIABLES       ##
-###########################
+############################
+##       VARIABLES        ##
+############################
 
-###########################
-##       FUNCIONES       ##
-###########################
-preconfiguraciones() {
+############################
+##       FUNCIONES        ##
+############################
+python_preconfiguraciones() {
     echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
 }
 
-instalacion() {
+python_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
+    compruebaExisteProyecto
+    generarEstructura "$WORKSCRIPT/python/estructura"
+
+    echo -e "$VE Descargando plantilla$CL"
+    wget 'https://github.com/fryntiz/Debian_Developer_Init/raw/master/conf/home/Plantillas/Gen%C3%A9ricas/Scripts/Python3.py' -O "$nombre/main.py"
 }
 
-postconfiguraciones() {
+python_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-    local dirActual=$PWD
-    cd "$nombre" || exit 1
-    echo -e "$VE Asigando permisos$CL"
-    make permisosWEB
-    cd "$dirActual" || exit 1
+    permisos
+    inicializar_GIT
 }
 
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-generar_php_yii_basic() {
-    echo -e "$VE Generador de proyecto YII Básico$CL"
-
-    ## Comprueba si ya existe un proyecto
-    compruebaExisteProyecto
-
-    preconfiguraciones
-    instalacion
-    postconfiguraciones
-
-    ## Crear Base de Datos
-    #generarBD
-
-    ## Asigna permisos necesarios
-    #permisos
-
-    ## Preguntar si quiere inicializar repositorio y sincronizar con GitHub
-    inicializar_GIT
+## Recibe el nombre del proyecto a crear y lo genera
+generar_python() {
+    echo -e "$VE Generador de proyecto Python$CL"
+    python_preconfiguraciones
+    python_instalacion
+    python_postconfiguraciones
 }
