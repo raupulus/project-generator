@@ -141,18 +141,18 @@ subir_github() {
 ##
 inicializar_GIT() {
     ## Pregunto si iniciar repositorio, si existe y no hay un directorio ".git"
-    local dirActual=$PWD
-
     if [[ -d "$nombre" ]] && [[ ! -d "$nombre/.git" ]]; then
+        local dirActual=$PWD
+
         ## Entrar al repositorio
         cd "$nombre" || return 0
         git init -q
         git add .
         git commit -q -m "Commit inicial de Proyecto recién generado"
+
+        ## Llama a la función que sube el repositorio a GitHub
+        subir_github
+
+        cd "$dirActual" || exit 1
     fi
-
-    ## Llama a la función que sube el repositorio a GitHub
-    subir_github
-
-    cd "$dirActual" || exit 1
 }
