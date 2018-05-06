@@ -46,7 +46,7 @@ postconfiguraciones() {
     local dirActual=$PWD
     cd "$nombre" || exit 1
     echo -e "$VE Asigando permisos$CL"
-    make permisos
+    make permisosWEB
     cd "$dirActual" || exit 1
 }
 
