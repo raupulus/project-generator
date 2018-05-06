@@ -63,11 +63,11 @@ menu_principal() {
         echo ""
         echo -e "$RO 1)$AZ Proyecto PHP YII Básico$RO (yii|yii2)$CL"
         #echo -e "$RO 2)$AZ Proyecto PHP YII Avanzado$RO (yii-adv|yii2-adv)$CL"
-        #echo -e "$RO 3)$AZ Proyecto PHP Laravel$RO (laravel)$CL"
-        echo -e "$RO 4)$AZ Proyecto Bash básico$RO (bash)$CL"
-        echo -e "$RO 5)$AZ Proyecto Python 3 básico$RO (python|python3)$CL"
-        #echo -e "$RO 6)$AZ Proyecto Python 2$RO (python2)$CL"
-        #echo -e "$RO 8)$AZ Proyecto Python Django$RO (django)$CL"
+        echo -e "$RO 3)$AZ Proyecto Bash básico$RO (bash)$CL"
+        echo -e "$RO 4)$AZ Proyecto Python 3 básico$RO (python|python3)$CL"
+        #echo -e "$RO 5)$AZ Proyecto Python 2$RO (python2)$CL"
+        #echo -e "$RO 6)$AZ Proyecto Python Django$RO (django)$CL"
+        #echo -e "$RO 7)$AZ Proyecto PHP Laravel$RO (laravel)$CL"
         echo -e "$RO 0)$AZ Salir$CL"
         echo ""
         echo -e "$RO Introduce el proyecto"
@@ -77,8 +77,8 @@ menu_principal() {
         case $entrada in
             1) generar_php_yii_basic && exit 0;;
             #2) generar_php_yii_advanced && exit 0;;
-            4) generar_bash && exit 0;;
-            5) generar_python && exit 0;;
+            3) generar_bash && exit 0;;
+            4) generar_python && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
