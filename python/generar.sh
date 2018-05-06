@@ -32,3 +32,22 @@
 ############################
 ##       FUNCIONES        ##
 ############################
+python_preconfiguraciones() {
+    echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
+}
+
+python_instalacion() {
+    echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
+}
+
+python_postconfiguraciones() {
+    echo -e "$VE Generando Postconfiguraciones$CL"
+}
+
+###########################
+##       EJECUCIÓN       ##
+###########################
+## Recibe el nombre del proyecto a crear y lo genera
+generar_python() {
+    echo -e "$VE Generador de proyecto Python$CL"
+}
