@@ -50,4 +50,7 @@ python_postconfiguraciones() {
 ## Recibe el nombre del proyecto a crear y lo genera
 generar_python() {
     echo -e "$VE Generador de proyecto Python$CL"
+    python_preconfiguraciones
+    python_instalacion
+    python_postconfiguraciones
 }
