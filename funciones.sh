@@ -101,10 +101,22 @@ generarBD() {
 permisos() {
     echo -e "$VE Asignando dueños y permisos$CL"
     echo -e "$VE Usuario →$RO $USER$CL"
+    echo -e "$VE Grupo   →$RO $USER$CL"
+    chmod 755 -R "$nombre"
+    chown "$USER:$USER" -R "$nombre"
+}
+
+##
+## Establece permisos correspondientes para el nuevo proyecto WEB
+##
+permisosWEB() {
+    echo -e "$VE Asignando dueños y permisos$CL"
+    echo -e "$VE Usuario →$RO $USER$CL"
     echo -e "$VE Grupo   →$RO www-data$CL"
     chmod 775 -R "$nombre"
     chown "$USER:www-data" -R "$nombre"
 }
+
 ##
 ## Crea un repositorio en remoto en github y sube los cambios
 ##
