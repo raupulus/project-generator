@@ -53,7 +53,6 @@ postconfiguraciones() {
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-## Recibe el nombre del proyecto a crear y lo genera
 generar_php_yii_basic() {
     echo -e "$VE Generador de proyecto YII Básico$CL"
 
