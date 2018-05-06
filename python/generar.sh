@@ -40,6 +40,9 @@ python_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
     compruebaExisteProyecto
     generarEstructura "$WORKSCRIPT/python/estructura"
+
+    echo -e "$VE Descargando plantilla$CL"
+    wget 'https://github.com/fryntiz/Debian_Developer_Init/raw/master/conf/home/Plantillas/Gen%C3%A9ricas/Scripts/Python3.py' -O "$nombre/main.py"
 }
 
 python_postconfiguraciones() {
