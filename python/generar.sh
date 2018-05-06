@@ -47,6 +47,7 @@ python_instalacion() {
 
 python_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
+    permisos
     inicializar_GIT
 }
 
