@@ -38,7 +38,8 @@ preconfiguraciones() {
 
 instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
+    #composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
+    composer create-project fryntiz/yii2-app-basic:dev-master --no-interaction $nombre
 }
 
 postconfiguraciones() {
