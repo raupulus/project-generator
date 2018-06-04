@@ -58,6 +58,8 @@ nombre=''  ## El nombre del proyecto
 ###########################
 ## Menú principal
 menu_principal() {
+    nombreProyecto  ## Pide el nombre del proyecto
+
     while true; do
         clear
         echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"

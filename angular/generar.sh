@@ -59,7 +59,7 @@ angular_postconfiguraciones() {
 ##       EJECUCIÓN       ##
 ###########################
 generar_angular() {
-    echo -e "$VE Generador de proyecto YII Básico$CL"
+    echo -e "$VE Generador de proyecto en Angular$CL"
 
     ## Comprueba si ya existe un proyecto
     compruebaExisteProyecto
