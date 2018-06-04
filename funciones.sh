@@ -111,9 +111,15 @@ permisos() {
 ##
 permisosWEB() {
     echo -e "$VE Asignando dueños y permisos$CL"
-    echo -e "$VE Usuario →$RO $USER$CL"
-    echo -e "$VE Grupo   →$RO www-data$CL"
     chmod 775 -R "$nombre"
+    ownApache
+}
+
+##
+## Establece dueño www-data para Apache 2
+##
+ownerApache() {
+    echo -e "$VE Asignando dueño$RO $USER$VE y grupo$RO www-data$CL"
     chown "$USER:www-data" -R "$nombre"
 }
 
