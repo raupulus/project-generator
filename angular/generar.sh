@@ -50,9 +50,7 @@ angular_instalacion() {
 angular_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
     local dirActual=$PWD
-    cd "$nombre" || exit 1
     ownerApache
-    cd "$dirActual" || exit 1
 }
 
 ###########################
