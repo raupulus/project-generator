@@ -37,17 +37,36 @@ nombreProyecto() {
 ## Comprueba si ya existe este proyecto
 ##
 compruebaExisteProyecto() {
-    ## Comprueba que no exista
     if [[ -d "$nombre" ]]; then
         echo -e "$RO Ya existe el directorio$AM $nombre$CL"
         echo -e "$VE ¿Quieres$RO BORRAR$VE y generarlo de nuevo?$RO"
         read -p '  s/N → ' opcion
-        if [[ $opcion = 's' ]] || [[ $opcion = 'S' ]]; then
+        if [[ "$opcion" = 's' ]] || [[ "$opcion" = 'S' ]]; then
             rm -Rf "$nombre"
         else
             echo -e "$VE Has elegido no borrarlo, no se puede continuar$CL"
             exit 1
         fi
+    fi
+}
+
+##
+## Comprueba si los comandos recibidos existen
+## $* Recibe los nombres de los comandos a comprobar
+##
+compruebaExisteComando() {
+    local error=False
+
+    for c in $*; do
+        if [[ ! -x "/usr/bin/$c" ]]; then
+            echo "No existe el comando $c"
+            error=True
+        fi
+    done
+
+    if [[ "$error" = 'True' ]]; then
+        echo "$RO Instala los paquetes como dependencia antes de continuar$CL"
+        exit 1
     fi
 }
 
@@ -111,9 +130,15 @@ permisos() {
 ##
 permisosWEB() {
     echo -e "$VE Asignando dueños y permisos$CL"
-    echo -e "$VE Usuario →$RO $USER$CL"
-    echo -e "$VE Grupo   →$RO www-data$CL"
     chmod 775 -R "$nombre"
+    ownApache
+}
+
+##
+## Establece dueño www-data para Apache 2
+##
+ownerApache() {
+    echo -e "$VE Asignando dueño$RO $USER$VE y grupo$RO www-data$CL"
     chown "$USER:www-data" -R "$nombre"
 }
 
