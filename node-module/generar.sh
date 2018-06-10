@@ -51,18 +51,15 @@ node-module_instalacion() {
 
     touch 'index.js' "lib/${nombre}.js" "lib/${nombre}.css" "lib/index.js"
 
-    echo "var fuzzy = require(\'./lib/${nombre}.js\');" > 'index.js'
+    echo "var fuzzy = require('./lib/${nombre}.js');" > 'index.js'
     echo "# Módulo NodeJS: $nombre" > 'README.md'
-    echo "module.exports = require(\'./lib/${nombre}\');" > 'lib/index.js'
+    echo "module.exports = require('./lib/${nombre}');" > 'lib/index.js'
 
     cd "$dirActual" || exit 1
 }
 
 node-module_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-
-    make permisos
-
     inicializar_GIT
 }
 
