@@ -47,6 +47,7 @@ source "$WORKSCRIPT/php-yii-advanced/generar.sh"
 source "$WORKSCRIPT/python/generar.sh"
 source "$WORKSCRIPT/bash/generar.sh"
 source "$WORKSCRIPT/angular/generar.sh"
+source "$WORKSCRIPT/node-module/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
@@ -75,6 +76,7 @@ menu_principal() {
         echo -e "$RO 8)$AZ Proyecto PHP YII Básico$RO (yii|yii2)$CL"
         #echo -e "$RO 9)$AZ Proyecto PHP YII Avanzado$RO (yii-adv|yii2-adv)$CL"
         echo -e "$RO 10)$AZ Proyecto JS con Angular$RO (a|ang|angular)$CL"
+        echo -e "$RO 11)$AZ Proyecto Módulo NodeJS$RO (n|nod|node)$CL"
         echo -e "$RO 0)$AZ Salir$CL"
         echo ""
         echo -e "$RO Introduce el proyecto"
@@ -87,6 +89,7 @@ menu_principal() {
             8) generar_php_yii_basic && exit 0;;
             #9) generar_php_yii_advanced && exit 0;;
             10) generar_angular && exit 0;;
+            11) generar_node-module && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
@@ -110,7 +113,8 @@ proyectos() {
         'yii' | 'yii2') generar_php_yii_basic && exit 0;;
         'bash') generar_bash && exit 0;;
         'python' | 'python3') generar_python && exit 0;;
-        'a' | 'ang' |' angular') generar_angular && exit 0;;
+        'a' | 'ang' |'angular') generar_angular && exit 0;;
+        'n' | 'nod' |'node') generar_node-module && exit 0;;
         *) clear; echo -e "$RO Tipo de proyecto$RO no válido$CL"; exit 1;;
     esac
 }
