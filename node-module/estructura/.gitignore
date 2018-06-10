@@ -1,0 +1,50 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Módulos de NodeJS con npm
+/node_modules
+
+# Mac DS_Store Files
+.DS_Store
+
+# Papelera de Linux
+.trash
+.Trash
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+tests/_output/*
+tests/_support/_generated
+tests/chromedriver
+
+#vagrant folder
+/.vagrant
+
+# codesniffer cache
+.php_cs.cache
+
+# local environment variables
+.env
+
+# Atom editor archivos de proyectos
+/.ropeproject
