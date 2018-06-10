@@ -1,0 +1,10 @@
+# Ignore file test example
+/index.js
+
+## Directory-based project format
+.idea
+/*.iml
+
+## File-based project format
+*.ipr
+*.iws
