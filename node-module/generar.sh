@@ -43,13 +43,26 @@ node-module_instalacion() {
 
     generarEstructura "$WORKSCRIPT/node-module/estructura"
 
+    local dirActual=$PWD
+    cd "$nombre" || exit 1
+
     echo -e "$VE Inicializando configuración con$RO npm init$VE"
-    npm init
+    npm init || exit 1
+
+    touch 'index.js' "lib/${nombre}.js" "lib/${nombre}.css" "lib/index.js"
+
+    echo "var fuzzy = require(\'./lib/${nombre}.js\');" > 'index.js'
+    echo "# Módulo NodeJS: $nombre" > 'README.md'
+    echo "module.exports = require(\'./lib/${nombre}\');" > 'lib/index.js'
+
+    cd "$dirActual" || exit 1
 }
 
 node-module_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-    permisos
+
+    make permisos
+
     inicializar_GIT
 }
 
