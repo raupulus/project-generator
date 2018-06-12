@@ -48,8 +48,7 @@ blask_instalacion() {
     pipenv install -e .
     pipenv run pip install blask
     cd "$dirActual" || exit 1
-
-    echo -e "$VE Instalando y/o actualizando$RO Blask$VE desde$RO pip3$CL"
+}
 
 blask_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
@@ -60,7 +59,6 @@ blask_postconfiguraciones() {
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-## Recibe el nombre del proyecto a crear y lo genera
 generar_blask() {
     echo -e "$VE Generador de proyecto Blask$CL"
     blask_preconfiguraciones
