@@ -1,0 +1,16 @@
+{
+  "application": {
+    "name": "Nombre de la aplicación",
+    "description": "Application description",
+    "keywords": {}
+  },
+  "autor": {
+    "name": "Raúl Caro Pastorino",
+    "alias": "fryntiz",
+    "twitter": "@fryntiz",
+    "url": "http://www.fryntiz.es",
+    "img": "",
+    "github": "https://github.com/fryntiz",
+    "gitlab": "https://gitlab.com/fryntiz"
+  }
+}
