@@ -50,6 +50,7 @@ source "$WORKSCRIPT/angular/generar.sh"
 source "$WORKSCRIPT/node-module/generar.sh"
 source "$WORKSCRIPT/blask/generar.sh"
 source "$WORKSCRIPT/hexo/generar.sh"
+source "$WORKSCRIPT/javascript/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
@@ -68,7 +69,7 @@ menu_principal() {
         echo -e "$VE Bienvenido al menú principal, selecciona un proyecto$CL"
         echo ""
 
-        #echo -e "$RO 1)$AZ Proyecto JS básico$RO (js|javascript)$CL"
+        echo -e "$RO 1)$AZ Proyecto JS básico$RO (js|javascript)$CL"
         #echo -e "$RO 2)$AZ Proyecto php básico$RO (php)$CL"
         echo -e "$RO 3)$AZ Proyecto Bash básico$RO (bash)$CL"
         echo -e "$RO 4)$AZ Proyecto Python 3 básico$RO (python|python3)$CL"
@@ -88,6 +89,7 @@ menu_principal() {
         echo -e "$CL"
 
         case $entrada in
+            1) generar_javascript && exit 0;;
             3) generar_bash && exit 0;;
             4) generar_python && exit 0;;
             8) generar_php_yii_basic && exit 0;;
@@ -116,6 +118,7 @@ proyectos() {
 
     ## Ejecuta el script generador correspondiente o sale con aviso y error
     case "$1" in
+        'js' | 'javascript') generar_javascript && exit 0;;
         'yii' | 'yii2') generar_php_yii_basic && exit 0;;
         'bash') generar_bash && exit 0;;
         'python' | 'python3') generar_python && exit 0;;
