@@ -46,8 +46,8 @@ javascript_instalacion() {
     cd "$nombre" || exit 1
     npm install
     cd "$dirActual" || exit 1
-
 }
+
 javascript_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
     permisos

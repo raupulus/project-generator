@@ -142,6 +142,7 @@ elif [[ $# = 3 ]]; then
 else
     clear
     echo -e "$RO Opción no válida$CL"
+    exit 1
 fi
 
 exit 0
