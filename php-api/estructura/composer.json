@@ -1,5 +1,15 @@
 {
-    "require": {
-        "slim/slim": "^3.10"
-    }
+  "name": "fryntiz/yii2-app-basic",
+  "description": "Yii 2 Basic Project Template",
+  "keywords": ["json", "api", "php",
+    "project template", "api template", "fryntiz"],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+
+  "require": {
+    "php": "^7.0.0",
+    "slim/slim": "^3.10",
+    "symfony/dotenv": "^3.0"
+  }
 }
