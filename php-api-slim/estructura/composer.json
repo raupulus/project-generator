@@ -6,10 +6,14 @@
   "homepage": "http://fryntiz.es",
   "type": "project",
   "license": "GPLv3",
-
   "require": {
     "php": "^7.0.0",
     "slim/slim": "^3.10",
     "symfony/dotenv": "^3.0"
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "[[ -f setup.sh ]] && ./setup.sh || true"
+    ]
   }
 }
