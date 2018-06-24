@@ -40,17 +40,19 @@ php_api_slim_preconfiguraciones() {
 
 php_api_slim_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    generarEstructura "$WORKSCRIPT/php-api-slim/estructura"
-
-    local dirActual=$PWD
-    cd "$nombre" || exit 1
-    composer install
-    cd "$dirActual" || exit 1
+    #generarEstructura "$WORKSCRIPT/php-api-slim/estructura"
+    #composer create-project fryntiz/api-slim-template --no-interaction $nombre
+    composer create-project fryntiz/api-slim-template:dev-master --no-interaction $nombre
 }
 
 php_api_slim_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
-    permisos
+    local dirActual=$PWD
+    cd "$nombre" || exit 1
+    echo -e "$VE Asigando permisos$CL"
+    make permisos
+    cd "$dirActual" || exit 1
+
     inicializar_GIT
 }
 
