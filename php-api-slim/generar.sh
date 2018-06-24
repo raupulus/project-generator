@@ -45,7 +45,7 @@ php_api_slim_instalacion() {
     local dirActual=$PWD
     cd "$nombre" || exit 1
     composer install
-    ./setup.sh
+    . setup.sh
     cd "$dirActual" || exit 1
 }
 

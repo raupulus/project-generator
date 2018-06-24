@@ -12,7 +12,7 @@ PROYECT_NAME="$(echo $DIR | tr -d ' ' \
                           | tr 'ñ' 'n' \
                           #| tr -cs '[:alnum:]' '_') \
 )"
-sed -i s/plantilla/$PROYECT_NAME/g db/* config/* apache.conf codeception.yml \
+sed -i s/plantilla/$PROYECT_NAME/g db/* config/* apache.conf \
     Makefile CITATION.txt README.md LICENSE
 
 mv 'apache.conf' "$PROYECT_NAME.conf"
