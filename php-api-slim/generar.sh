@@ -58,8 +58,7 @@ php_api_slim_postconfiguraciones() {
 ##       EJECUCIÓN       ##
 ###########################
 generar_php_api_slim() {
-    echo -e "$VE Generador de proyecto de$RO API RESTful$VE con$RO PHP$VE
-    y$RO Slim$CL"
+    echo -e "$VE Generador de proyecto de$RO API RESTful$VE con$RO PHP$VE y$RO Slim$CL"
     php_api_slim_preconfiguraciones
     php_api_slim_instalacion
     php_api_slim_postconfiguraciones
