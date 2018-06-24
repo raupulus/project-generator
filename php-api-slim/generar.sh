@@ -32,23 +32,24 @@
 ############################
 ##       FUNCIONES        ##
 ############################
-php_api_preconfiguraciones() {
+php_api_slim_preconfiguraciones() {
     echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
     #compruebaExisteComando 'python3' 'pip3'
     compruebaExisteProyecto
 }
 
-php_api_instalacion() {
+php_api_slim_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    generarEstructura "$WORKSCRIPT/php_api/estructura"
+    generarEstructura "$WORKSCRIPT/php_api_slim/estructura"
 
     local dirActual=$PWD
     cd "$nombre" || exit 1
-
+    composer install
+    ./setup.sh
     cd "$dirActual" || exit 1
 }
 
-php_api_postconfiguraciones() {
+php_api_slim_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
     permisos
     inicializar_GIT
@@ -57,9 +58,10 @@ php_api_postconfiguraciones() {
 ###########################
 ##       EJECUCIÓN       ##
 ###########################
-generar_php_api() {
-    echo -e "$VE Generador de proyecto de$RO API RESTful$VE con$RO PHP$CL"
-    php_api_preconfiguraciones
-    php_api_instalacion
-    php_api_postconfiguraciones
+generar_php_api_slim() {
+    echo -e "$VE Generador de proyecto de$RO API RESTful$VE con$RO PHP$VE
+    y$RO Slim$CL"
+    php_api_slim_preconfiguraciones
+    php_api_slim_instalacion
+    php_api_slim_postconfiguraciones
 }
