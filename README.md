@@ -2,11 +2,16 @@
 
 Genera la estructura entre varios proyectos de los más recurridos en mi trabajo
 
-El objetivo principal de este repositorio es crear de una forma sencilla un proyecto entre los cuales dejo planteado, mediante un menú de selección.
+El objetivo principal de este repositorio es crear de una forma sencilla un 
+proyecto entre los cuales dejo planteado, mediante un menú de selección.
 
-Se creará un comando solo para el usuario que podrá llamarse desde cualquier parte del sistema escribiendo "**proyecto**" dentro del directorio donde se desea crear. Una vez ejecutado el comando preguntará el tipo de proyecto a generar y creará su estructura.
+Se creará un comando solo para el usuario que podrá llamarse desde cualquier 
+parte del sistema escribiendo "**proyecto**" dentro del directorio donde se 
+desea crear. Una vez ejecutado el comando preguntará el tipo de proyecto a 
+generar y creará su estructura.
 
-Tras crear la estructura nos preguntará si inicializar el repositorio y después si crear un repositorio en github asociado al mismo.
+Tras crear la estructura nos preguntará si inicializar el repositorio y 
+después si crear un repositorio en github asociado al mismo.
 
 ![Imagen de previsualización](docs/preview.png)
 
@@ -31,7 +36,8 @@ Para aplicaciones o frameworks php es necesario tener instalado **composer**.
 Más sobre comoser: https://getcomposer.org/
 
 Para aplicaciones o frameworks python es necesario tener instalado **pip** y/o
-**pip3** para python3. Más información: https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)
+**pip3** para python3. 
+Más información: https://es.wikipedia.org/wiki/Pip_(administrador_de_paquetes)
 
 ## Instalación
 
@@ -94,6 +100,12 @@ Las plantillas de proyectos implementadas hasta el momento son:
 |   Lenguaje   |  framework   |   Plantilla  |    Custom    |
 | :----------: | :----------: | :----------: | :----------: |
 |     php      |     yii2     |    Básica    |      Si      |
+|      JS      |    Angular   |    Básica    |      Si      |
+|     Bash     |      -       |    Básica    |      Si      |
+|    Python    |    Blask     |    Básica    |      Si      |
+|      JS      |     Hexo     |    Básica    |      Si      |
+|      JS      |    NodeJS    |    Básica    |      Si      |
+|     php      |     Slim     |    Básica    |      Si      |
 
 -   Lenguaje  → Indica para que lenguaje de programación está orientado.
 -   Framework → Indica el framework del cual crea el esqueleto (si lo hubiera).
@@ -119,21 +131,30 @@ Resultando una ayuda como en la imagen a continuación:
 
 ![Imagen de previsualización](docs/preview3.png)
 
+En la ayuda podemos ver la sintaxis y además coloreado en **rojo** vemos el 
+tipo de proyecto que podremos utilizar para indicarlo al crear uno nuevo.
+
 ## A tener en cuenta
 
-Prácticamente todos los proyectos tendrán dependencias que se resuelven automáticamente si tenemos bien instalado las tecnologías necesarias.
+Prácticamente todos los proyectos tendrán dependencias que se resuelven 
+automáticamente si tenemos bien instalado las tecnologías necesarias.
 
-Se parte de haber preparado el script con una de las siguientes
-**herramientas** o conjunto de **scripts** propios:
+Se parte de haber preparado el sistema correctamente para cada lenguaje, 
+yo personalmente lo uso y testeo en Debian Stable usando la **herramienta**
+o conjunto de **scripts** propios desde el siguiente repositorio:
 
-- https://github.com/fryntiz/Fedora_Developer_Init
 - https://github.com/fryntiz/Debian_Developer_Init
 
 La Guía de **estilos** usada para la sintaxis en **bash** es la siguiente:
 
 - https://github.com/fryntiz/Bash_Style_Guide
 
-Se deberá tener configurado gestores de paquetes para cada **proyecto** y para **git**:
-- Para que funcione correctamente se deberá tener instalado servidores y tecnologías necesarias para cada ámbito, por ejemplo para un proyecto **php** deberá existir **composer**, para python **pip**
+Se deberá tener configurado gestores de paquetes para cada **proyecto** y para 
+**git**:
+
+- Para que funcione correctamente se deberá tener instalado servidores y 
+tecnologías necesarias para cada ámbito, por ejemplo para un proyecto **php** 
+deberá existir **composer**, para python **pip**
 - Para inicializar repositorio deberá estar instalado **GIT**.
-- Para poder crear repositorio en **GitHub** correctamente deberá estar **git** configurado en el sistema.
+- Para poder crear repositorio en **GitHub** correctamente deberá estar **git** 
+configurado en el sistema.

@@ -1,0 +1,40 @@
+# Travis CI configuration file.
+
+dist: trusty
+
+sudo: false
+
+language: php
+
+php:
+    - 7.0
+    - 7.1
+    - 7.2
+
+services:
+    - postgresql
+
+addons:
+    postgresql: "9.6"
+    chrome: stable
+
+before_install: phpenv config-rm xdebug.ini
+
+install:
+    - composer install --no-interaction
+
+before_script:
+    - db/create.sh travis
+    - sleep 3
+
+script:
+
+notifications:
+    email: false
+
+env:
+    global:
+        - DB=postgres
+        - SH=bash
+        - LANG=es_ES.UTF-8
+        - LC_ALL=es_ES.UTF-8

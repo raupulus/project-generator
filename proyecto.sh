@@ -56,7 +56,14 @@ if [[ "$1" = '-h' ]] || [[ "$1" = '--help' ]]; then
     echo ''
     echo -e "$AZ Tipos de proyectos:$CL"
     echo -e "$RO yii$VE → Genera estructura de Yii2 framework php$CL"
-    echo -e "$RO yii2$VE → Genera estructura de Yii2 framework php$CL"
+    echo -e "$RO js$VE → Genera Proyecto Javascript$CL"
+    echo -e "$RO slim$VE → Genera Proyecto Slim$CL"
+    echo -e "$RO bash$VE → Genera Proyecto Bash$CL"
+    echo -e "$RO python$VE → Genera Proyecto Python$CL"
+    echo -e "$RO angular$VE → Genera Proyecto Angular$CL"
+    echo -e "$RO node$VE → Genera Proyecto Node$CL"
+    echo -e "$RO blask$VE → Genera Proyecto Blask$CL"
+    echo -e "$RO hexo$VE → Genera Proyecto Hexo$CL"
 
     exit 0
 fi
@@ -65,9 +72,9 @@ fi
 if [[ ! -d "$WORKSCRIPT" ]] || [[ ! -f "$WORKSCRIPT/main.sh" ]]; then
     echo -e "$RO El programa principal ha sido movido de directorio$VE"
     read -p '¿Clonar de nuevo el directorio en el mismo lugar? s/N' entrada
-    if [[ "$entrada" = 's' ]] || [[ "$entrada" = "S" ]]; then
+    if [[ "$entrada" = 's' ]] || [[ "$entrada" = 'S' ]]; then
         echo -e "$VE Preparando para clonar repositorio$CL"
-        git 'clone https://github.com/fryntiz/Generador_Proyectos.git' "$WORKSCRIPT" || exit 1
+        git clone 'https://github.com/fryntiz/Generador_Proyectos.git' "$WORKSCRIPT" || exit 1
     else
         echo -e "$VE No se clona el repositorio, error al intentar regenerar$CL"
         exit 1
