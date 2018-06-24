@@ -32,17 +32,19 @@
 ###########################
 ##       FUNCIONES       ##
 ###########################
-preconfiguraciones() {
+php_yii_basic_preconfiguraciones() {
     echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
+    compruebaExisteComando 'composer' 'php'
+    compruebaExisteProyecto
 }
 
-instalacion() {
+php_yii_basic_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
     #composer create-project --prefer-dist fryntiz/yii2-app-basic:dev-master "$nombre"
     composer create-project fryntiz/yii2-app-basic:dev-master --no-interaction $nombre
 }
 
-postconfiguraciones() {
+php_yii_basic_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
     local dirActual=$PWD
     cd "$nombre" || exit 1
@@ -57,12 +59,9 @@ postconfiguraciones() {
 generar_php_yii_basic() {
     echo -e "$VE Generador de proyecto YII Básico$CL"
 
-    ## Comprueba si ya existe un proyecto
-    compruebaExisteProyecto
-
-    preconfiguraciones
-    instalacion
-    postconfiguraciones
+    php_yii_basic_preconfiguraciones
+    php_yii_basic_instalacion
+    php_yii_basic_postconfiguraciones
 
     ## Crear Base de Datos
     #generarBD
