@@ -25,13 +25,9 @@ install:
 
 before_script:
     - db/create.sh travis
-    - tests/download-chromedriver.sh
-    - tests/run-acceptance.sh
     - sleep 3
 
 script:
-    - vendor/bin/codecept run
-    - vendor/bin/phpcs
 
 notifications:
     email: false
@@ -42,9 +38,3 @@ env:
         - SH=bash
         - LANG=es_ES.UTF-8
         - LC_ALL=es_ES.UTF-8
-
-# # Cache folder, you can delete cache from Travis CI web interface
-# cache:
-#     directories:
-#         - vendor
-#         - $HOME/.composer/cache

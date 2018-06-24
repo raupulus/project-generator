@@ -3,14 +3,13 @@ engines:
     enabled: true
     config:
       file_extensions: "php,inc,lib"
-      standard: "PSR1,PSR2,Yii2"
+      standard: "PSR1,PSR2"
       ignore_warnings: true
       encoding: utf-8
   duplication:
     enabled: true
     config:
       languages:
-      - javascript
       - php
   eslint:
     enabled: true
@@ -25,7 +24,6 @@ ratings:
   - "**.js"
   - "**.php"
 exclude_paths:
-- views/
+- tmp/
 - tests/
 - docs/
-- requirements.php

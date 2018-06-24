@@ -1,11 +1,11 @@
 {
-  "name": "fryntiz/yii2-app-basic",
-  "description": "Yii 2 Basic Project Template",
+  "name": "fryntiz/php-api-template",
+  "description": "API php template basic",
   "keywords": ["json", "api", "php",
     "project template", "api template", "fryntiz"],
-  "homepage": "http://www.yiiframework.com/",
+  "homepage": "http://fryntiz.es",
   "type": "project",
-  "license": "BSD-3-Clause",
+  "license": "GPLv3",
 
   "require": {
     "php": "^7.0.0",
