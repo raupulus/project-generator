@@ -34,13 +34,13 @@
 ############################
 php_api_slim_preconfiguraciones() {
     echo -e "$VE Generando Preconfiguraciones para el nuevo proyecto$CL"
-    #compruebaExisteComando 'python3' 'pip3'
+    compruebaExisteComando 'composer' 'php'
     compruebaExisteProyecto
 }
 
 php_api_slim_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    generarEstructura "$WORKSCRIPT/php_api_slim/estructura"
+    generarEstructura "$WORKSCRIPT/php-api-slim/estructura"
 
     local dirActual=$PWD
     cd "$nombre" || exit 1
