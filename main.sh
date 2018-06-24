@@ -83,7 +83,7 @@ menu_principal() {
         echo -e "$RO 11)$AZ Proyecto Módulo NodeJS$RO (n|nod|node)$CL"
         echo -e "$RO 12)$AZ Proyecto Blask (Microblog)$RO (blask)$CL"
         echo -e "$RO 13)$AZ Proyecto Hexo (Microblog)$RO (hexo)$CL"
-        echo -e "$RO 14)$AZ Proyecto PHP API con Slim$RO (sim|phpslim|phpapi)
+        echo -e "$RO 14)$AZ Proyecto PHP API con Slim$RO (slim|phpslim|phpapi)
 $CL"
         echo -e "$RO 0)$AZ Salir$CL"
         echo ""
