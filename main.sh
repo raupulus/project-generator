@@ -51,6 +51,7 @@ source "$WORKSCRIPT/node-module/generar.sh"
 source "$WORKSCRIPT/blask/generar.sh"
 source "$WORKSCRIPT/hexo/generar.sh"
 source "$WORKSCRIPT/javascript/generar.sh"
+source "$WORKSCRIPT/php-api-slim/generar.sh"
 
 ###########################
 ##       VARIABLES       ##
@@ -82,6 +83,8 @@ menu_principal() {
         echo -e "$RO 11)$AZ Proyecto Módulo NodeJS$RO (n|nod|node)$CL"
         echo -e "$RO 12)$AZ Proyecto Blask (Microblog)$RO (blask)$CL"
         echo -e "$RO 13)$AZ Proyecto Hexo (Microblog)$RO (hexo)$CL"
+        echo -e "$RO 14)$AZ Proyecto PHP API con Slim$RO (sim|phpslim|phpapi)
+$CL"
         echo -e "$RO 0)$AZ Salir$CL"
         echo ""
         echo -e "$RO Introduce el proyecto"
@@ -98,6 +101,7 @@ menu_principal() {
             11) generar_node-module && exit 0;;
             12) generar_blask && exit 0;;
             13) generar_hexo && exit 0;;
+            14) generar_php_api_slim && exit 0;;
             0) exit 0;;
             *) clear; echo -e "$RO Opción no válida$CL"; read;;
         esac
@@ -119,6 +123,7 @@ proyectos() {
     ## Ejecuta el script generador correspondiente o sale con aviso y error
     case "$1" in
         'js' | 'javascript') generar_javascript && exit 0;;
+        'slim' | 'phpslim' | 'phpapi') generar_php_api_slim && exit 0;;
         'yii' | 'yii2') generar_php_yii_basic && exit 0;;
         'bash') generar_bash && exit 0;;
         'python' | 'python3') generar_python && exit 0;;
