@@ -21,6 +21,15 @@ sudo cp plantilla.conf /etc/apache2/sites-available/
 hexo deploy
 sudo a2ensite plantilla
 sudo mkdir -p /var/log/apache2/plantilla
-sudo systemctl restart apache2
+
+if [[ -f '/usr/bin/certbot' ]]; then
+    read -p "¿Generar certificado ssl para https con certbot? → s/N" SN
+    if [[ "$SN" = 's' ]] || [[ "$SN" = 'S' ]]; then
+        # -d dominios que acceden a la ruta en -w (se pueden añadir más)
+        sudo certbot certonly --webroot -w /var/www/html/Publico/plantilla/public -d plantilla
+    fi
+fi
+
+sudo systemctl reload apache2
 
 exit 0
