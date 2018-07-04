@@ -45,7 +45,6 @@ hexo_preconfiguraciones() {
 
 hexo_instalacion() {
     echo -e "$VE Creando proyecto con el nombre$RO $nombre$CL"
-    #generarEstructura "$WORKSCRIPT/hexo/estructura"
     hexo init $nombre
 
     local dirActual=$PWD
@@ -53,7 +52,14 @@ hexo_instalacion() {
     npm install
     # hexo server
     cd "$dirActual" || exit 1
+
+    generarEstructura "$WORKSCRIPT/hexo/estructura"
+
+    cd "$nombre" || exit 1
+    ./setup.sh
+    cd "$dirActual" || exit 1
 }
+
 hexo_postconfiguraciones() {
     echo -e "$VE Generando Postconfiguraciones$CL"
     permisos
