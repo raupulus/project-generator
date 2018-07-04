@@ -16,7 +16,7 @@
 VERSION="0.0.1"
 WORKSCRIPT=$PWD  USER=$(whoami)   
 
-cp plantilla.conf /etc/apache2/sites-available/
-a2ensite plantilla
+sudo cp plantilla.conf /etc/apache2/sites-available/
+sudo a2ensite plantilla
 
 exit 0
