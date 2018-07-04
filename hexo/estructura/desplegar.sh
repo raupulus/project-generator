@@ -17,6 +17,7 @@ VERSION="0.0.1"
 WORKSCRIPT=$PWD  USER=$(whoami)   
 
 sudo cp plantilla.conf /etc/apache2/sites-available/
+hexo deploy
 sudo a2ensite plantilla
 
 exit 0
