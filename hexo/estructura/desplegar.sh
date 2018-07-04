@@ -14,10 +14,13 @@
 ## @style      https://github.com/fryntiz/Bash_Style_Guide
 
 VERSION="0.0.1"
-WORKSCRIPT=$PWD  USER=$(whoami)   
+WORKSCRIPT=$PWD
+USER=$(whoami)
 
 sudo cp plantilla.conf /etc/apache2/sites-available/
 hexo deploy
 sudo a2ensite plantilla
+sudo mkdir -p /var/log/apache2/plantilla
+sudo systemctl restart apache2
 
 exit 0
