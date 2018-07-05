@@ -22,14 +22,27 @@ hexo deploy
 sudo a2ensite plantilla
 sudo mkdir -p /var/log/apache2/plantilla
 
-if [[ -f '/usr/bin/certbot' ]]; then
-    read -p "¿Generar certificado ssl para https con certbot? → s/N" SN
-    if [[ "$SN" = 's' ]] || [[ "$SN" = 'S' ]]; then
-        # -d dominios que acceden a la ruta en -w (se pueden añadir más)
-        sudo certbot certonly --webroot -w /var/www/html/Publico/plantilla/public -d plantilla
-    fi
-fi
+##
+## Cuando la llamada al script recibe el parámetro "-y" se ejecuta sin preguntas
+##
+certificado() {
+    if [[ -f '/usr/bin/certbot' ]]; then
+        local SN=''
 
+        if [[ "$1" = '-y' ]]; then
+            SN='S'
+        else
+            read -p "¿Generar certificado ssl para https con certbot? → s/N" SN
+        fi
+
+        if [[ "$SN" = 's' ]] || [[ "$SN" = 'S' ]]; then
+            # -d dominios (se pueden añadir más), -w ruta absoluta al directorio
+            sudo certbot certonly --webroot -w /var/www/html/Publico/plantilla/public -d plantilla
+        fi
+    fi
+}
+
+certificado "$1"
 sudo systemctl reload apache2
 
 exit 0

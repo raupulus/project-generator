@@ -27,4 +27,4 @@ apache:
 	./desplegar.sh
 
 u update:
-	hexo deploy
+	hexo generate
