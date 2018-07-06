@@ -42,6 +42,7 @@ certificado() {
     fi
 }
 
+sudo systemctl reload apache2
 certificado "$1"
 sudo systemctl reload apache2
 
