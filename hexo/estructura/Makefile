@@ -1,4 +1,5 @@
-.PHONY: all install npm serve clean permisos perm p requeriments req apache
+.PHONY: all install npm serve clean permisos perm p requeriments req apache \
+u update
 
 all: install
 
@@ -24,3 +25,6 @@ requeriments req:
 
 apache:
 	./desplegar.sh
+
+u update:
+	hexo generate
